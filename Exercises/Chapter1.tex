@@ -1,0 +1,230 @@
+\documentclass[en, oneside]{vivi}
+
+\ProjectInfos{Introduction to Quantum Mechanics}{PHY-512}{Spring, 2025}{Chapter1}{Due date: }{Vivi}[https://github.com/Vivi26499]{24S153073}
+
+\begin{document}
+
+\begin{prob}
+    For the distribution of ages in the example in Section 1.3.1:
+    \begin{enumerate}[label=(\alph*)]
+        \item Compute $\langle j^2 \rangle$ and $\langle j \rangle^2$.
+        \item Determine $\Delta j$ for each $j$, and use Equation 1.11 to compute the standard deviation.
+        \item Use your results in (a) and (b) to check Equation 1.12.
+    \end{enumerate}
+\end{prob}
+
+\begin{prob}
+    \begin{enumerate}[label=(\alph*)]
+        \item Find the standard deviation of the distribution in Example 1.2.
+        \item What is the probability that a photograph, selected at random, would show a distance $x$ more than one standard deviation away from the average?
+    \end{enumerate}
+\end{prob}
+
+\begin{prob}
+    Consider the gaussian distribution
+    \begin{equation*}
+        \rho(x) = A e^{-\lambda (x - a)^2},
+    \end{equation*}
+    where $A$, $a$, and $\lambda$ are positive real constants. (The necessary integrals are inside the back cover.)
+    \begin{enumerate}[label=(\alph*)]
+        \item Use Equation 1.16 to determine $A$.
+        \item Find $\langle x \rangle$, $\langle x^2 \rangle$, and $\sigma$.
+        \item Sketch the graph of $\rho(x)$.
+    \end{enumerate}
+\end{prob}
+
+\begin{prob}
+    At time $t = 0$, a particle is presented by the wave function
+    \begin{equation*}
+        \Psi (x, 0) = \begin{cases}
+            A (x/a), & 0 \leq x \leq a,\\
+            A (b - x)/(b - a), & a \leq x \leq b,\\
+            0, & \text{otherwise},
+        \end{cases}
+    \end{equation*}
+    where $A$, $a$, and $b$ are positive constants.
+    \begin{enumerate}[label=(\alph*)]
+        \item Normalize $\Psi$ (that is, find A, in terms of $a$ and $b$).
+        \item Sketch $\Psi (x, 0)$, as a function of $x$.
+        \item Where is the particle most likely to be found at $t = 0$?
+        \item What is the probability of finding the particle to the left of $a$? Check your result in the limiting cases $b = a$ and $b = 2a$.
+        \item What is the expectation value of $x$.
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    \begin{enumerate}[label=(\alph*)]
+        \item \begin{align*}
+            1 &= \int_{-\infty}^{\infty} |\Psi (x, 0)|^2 \dif x\\
+            &= \int_{0}^{a} |A (x/a)|^2 \dif x + \int_{a}^{b} |A (b - x)/(b - a)|^2 \dif x\\
+            &= \frac{A^2}{a^2} \int_{0}^{a} x^2 \dif x + \frac{A^2}{(b - a)^2} \int_{a}^{b} (b - x)^2 \dif x\\
+            &= A^2 \left( \frac{a}{3} + \frac{b - a}{3} \right)\\
+            &= A^2 \frac{b}{3}.
+        \end{align*}
+        Thus, we have $A = \sqrt{\frac{3}{b}}$.
+        \item The sketch of $\Psi (x, 0)$ is shown below.
+        \begin{center}
+            \begin{tikzpicture}
+            \draw[->] (-0.5, 0) -- (4.5, 0) node[right] {$x$};
+            \draw[->] (0, -0.5) -- (0, 2.5) node[above] {$\Psi(x, 0)$};
+            \draw[scale=1, domain=0:2, smooth, variable=\x, blue] plot ({\x}, {\x});
+            \draw[scale=1, domain=2:4, smooth, variable=\x, blue] plot ({\x}, {4-\x});
+            \draw[dashed] (2, 0) -- (2, 2);
+            \draw[dashed] (4, 0) -- (4, 0);
+            \node at (2, -0.3) {$a$};
+            \node at (4, -0.3) {$b$};
+            \node at (-0.3, 2) {$A$};
+            \end{tikzpicture}
+        \end{center}
+        \item The particle is most likely to be found at $x = a$.
+        \item The probability of finding the particle to the left of $a$ is
+        \begin{align*}
+            P &= \int_{-\infty}^{a} |\Psi (x, 0)|^2 \dif x\\
+            &= \int_{0}^{a} |A (x/a)|^2 \dif x\\
+            &= \frac{A^2}{a^2} \int_{0}^{a} x^2 \dif x\\
+            &= A^2 \frac{a}{3}\\
+            &= \frac{3}{b} \frac{a}{3}\\
+            &= \frac{a}{b}.
+        \end{align*}
+        When $b = a$, we have $P = 1$. When $b = 2a$, we have $P = 1/2$.
+        \item The expectation value of $x$ is
+        \begin{align*}
+            \langle x \rangle &= \int_{-\infty}^{\infty} x |\Psi (x, 0)|^2 \dif x\\
+            &= \int_{0}^{a} x |A (x/a)|^2 \dif x + \int_{a}^{b} x |A (b - x)/(b - a)|^2 \dif x\\
+            &= \frac{A^2}{a^2} \int_{0}^{a} x^3 \dif x + \frac{A^2}{(b - a)^2} \int_{a}^{b} x (b - x)^2 \dif x\\
+            &= A^2 \frac{b(b^3 - 3 a^2 b + 2 a^3)}{12 (b - a)^2}\\
+            &= \frac{3}{b} \frac{b(2a + b)}{12}\\
+            &= \frac{2a + b}{4}.
+        \end{align*}
+    \end{enumerate}
+\end{sol}
+
+\begin{prob}
+    Consider the wave function
+    \begin{equation*}
+        \Psi (x, t) = A e^{-\lambda |x|} e^{-i \omega t},
+    \end{equation*},
+    where $A$, $\lambda$, and $\omega$ are positive real constants. (We'll see in Chapter 2 for what potential $(V)$ this wave function satisfies the Schrödinger equation.)
+    \begin{enumerate}[label=(\alph*)]
+        \item Normalize $\Psi$.
+        \item Determine the expectation values of $x$ and $x^2$.
+        \item Find the standard deviation of $x$. Sketch the graph of $|\Psi|^2$, as a function of $x$, and mark the points $\langle x \rangle + \sigma$ and $\langle x \rangle - \sigma$, to illustrate the sense in which $\sigma$ represents the "spread" in $x$. What is the probability that the particle would be found outside this range?
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    \begin{enumerate}[label=(\alph*)]
+        \item \begin{align*}
+            1 &= \int_{-\infty}^{\infty} |\Psi (x, t)|^2 \dif x\\
+            &= \int_{-\infty}^{\infty} |A e^{-\lambda |x|} e^{-i \omega t}|^2 \dif x\\
+            &= A^2 \int_{-\infty}^{\infty} e^{-2 \lambda |x|} \dif x\\
+            &= 2 A^2 \int_{0}^{\infty} e^{-2 \lambda x} \dif x\\
+            &= 2 A^2 \frac{1}{2 \lambda}\\
+            &= \frac{A^2}{\lambda}.
+        \end{align*}
+        Thus, we have $A = \sqrt{\lambda}$.
+        \item The expectation value of $x$ is
+        \begin{align*}
+            \langle x \rangle &= \int_{-\infty}^{\infty} x |\Psi (x, t)|^2 \dif x\\
+            &= \int_{-\infty}^{\infty} x |A e^{-\lambda |x|} e^{-i \omega t}|^2 \dif x\\
+            &= A^2 \int_{-\infty}^{\infty} x e^{-2 \lambda |x|} \dif x\\
+            &= 0.
+        \end{align*}
+        The expectation value of $x^2$ is
+        \begin{align*}
+            \langle x^2 \rangle &= \int_{-\infty}^{\infty} x^2 |\Psi (x, t)|^2 \dif x\\
+            &= \int_{-\infty}^{\infty} x^2 |A e^{-\lambda |x|} e^{-i \omega t}|^2 \dif x\\
+            &= A^2 \int_{-\infty}^{\infty} x^2 e^{-2 \lambda |x|} \dif x\\
+            &= 2 A^2 \int_{0}^{\infty} x^2 e^{-2 \lambda x} \dif x\\
+            &= 2 A^2 \frac{1}{4 \lambda^3}\\
+            &= \frac{1}{2 \lambda^2}.
+        \end{align*}
+        \item The standard deviation of $x$ is
+        \begin{align*}
+            \sigma &= \sqrt{\langle x^2 \rangle - \langle x \rangle^2}\\
+            &= \sqrt{\frac{1}{2 \lambda^2}}\\
+            &= \frac{1}{\sqrt{2} \lambda}.
+        \end{align*}
+        The graph of $|\Psi|^2$ is shown below.
+        \begin{center}
+            \begin{tikzpicture}
+            \draw[->] (-4, 0) -- (4, 0) node[right] {$x$};
+            \draw[->] (0, -0.5) -- (0, 2.5) node[above] {$|\Psi(x, t)|^2$};
+            \draw[scale=1, domain=-4:4, smooth, variable=\x, blue] plot ({\x}, {exp(-2*abs(\x))});
+            \draw[dashed] (0, 1) -- (1, 1);
+            \draw[dashed] (0, 1) -- (-1, 1);
+            \node at (1, -0.3) {$\sigma$};
+            \node at (-1, -0.3) {$-\sigma$};
+            \node at (-0.3, 1.3) {$\sqrt{\lambda}$};
+            \end{tikzpicture}
+        \end{center}
+        The probability that the particle would be found outside the range $[-\sigma, \sigma]$ is
+        \begin{align*}
+            P &= \int_{-\infty}^{-\sigma} |\Psi (x, t)|^2 \dif x + \int_{\sigma}^{\infty} |\Psi (x, t)|^2 \dif x\\
+            &= 2 \int_{\sigma}^{\infty} |\Psi (x, t)|^2 \dif x\\
+            &= 2 A^2 \int_{\sigma}^{\infty} e^{-2 \lambda x} \dif x\\
+            &= 2 A^2 \frac{1}{2 \lambda} e^{-2 \lambda \sigma}\\
+            &= e^{-2 \lambda \sigma}\\
+            &= e^{-\sqrt{2}}\\
+            &\approx 0.2431.
+        \end{align*}
+    \end{enumerate}
+\end{sol}
+
+\begin{prob}
+    Why can't you do integration-by-parts directly on the middle expression in Equation 1.29—pull the time derivative over onto $x$, note that $\partial x / \partial t = 0$, and conclude that $d \langle x \rangle / dt = 0$?
+\end{prob}
+
+\begin{sol}
+    \begin{align}
+        \frac{\dif}{\dif t} x \lvert \Psi \rvert^2 &= x \frac{\partial}{\partial t} \lvert \Psi \rvert^2 + \lvert \Psi \rvert^2 \frac{\partial x}{\partial t}\\
+        &= x \frac{\partial}{\partial t} \lvert \Psi \rvert^2
+    \end{align}
+\end{sol}
+
+\begin{prob}
+    Calculate $d \langle p \rangle / dt$. Answer:
+    \begin{equation*}
+        \frac{\dif \langle p \rangle}{\dif t} = \left\langle - \frac{\partial V}{\partial x} \right\rangle.
+    \end{equation*}
+    This is an instance of \textit{Ehrenfest's theorem}, which asserts that expectation values obey the classical laws.
+\end{prob}
+
+\begin{sol}
+    \begin{align}
+        \frac{\dif \langle p \rangle}{\dif t} &= -i \hbar \frac{\dif}{\dif t} \int_{-\infty}^{\infty} \Psi^* \frac{\partial \Psi}{\partial x} \dif x\\
+        &= -i \hbar \int_{-\infty}^{\infty} \left( \frac{\partial \Psi^*}{\partial t} \frac{\partial \Psi}{\partial x} + \Psi^* \frac{\partial}{\partial x} \frac{\partial \Psi}{\partial t}\right) \dif x\\
+        &= -i \hbar \int_{-\infty}^{\infty} \left[ \left( -\frac{i \hbar}{2m} \frac{\partial^2 \Psi^*}{\partial x^2} + \frac{i}{\hbar}V \Psi^*\right) \frac{\partial \Psi}{\partial x} +
+        \Psi^* \frac{\partial}{\partial x} \left( \frac{i \hbar}{2m} \frac{\partial^2 \Psi}{\partial x^2} - \frac{i}{\hbar}V \Psi \right) \right] \dif x\\
+        &= \frac{\hbar^2}{2m} \int_{-\infty}^{\infty}\left( \Psi^* \frac{\partial^3 \Psi}{\partial x^3} - \frac{\partial^2 \Psi^*}{\partial x^2} \frac{\partial \Psi}{\partial x}\right) \dif x +
+        \int_{-\infty}^{\infty} \left[V \Psi^* \frac{\partial \Psi}{\partial x} - \Psi^* \frac{\partial}{\partial x} (V \Psi)\right] \dif x\\
+        &= \frac{\hbar^2}{2m} \left[ \left(\Psi^* \frac{\partial^2 \Psi}{\partial x^2} \right) \bigg|_{-\infty}^{\infty} - \int_{-\infty}^{\infty} \frac{\partial \Psi^*}{\partial x} \frac{\partial^2 \Psi}{\partial x^2} \dif x -
+        \left( \frac{\partial \Psi^*}{\partial x} \frac{\partial \Psi}{\partial x} \right) \bigg|_{-\infty}^{\infty} + \int_{-\infty}^{\infty} \frac{\partial \Psi^*}{\partial x} \frac{\partial^2 \Psi}{\partial x^2} \right]\dif x\\
+        &+ \int_{-\infty}^{\infty} \left[V \Psi^* \frac{\partial \Psi}{\partial x} - \Psi^* V \frac{\partial \Psi}{\partial x} - \Psi^* \frac{\partial V}{\partial x} \Psi\right] \dif x\\
+        &= \int_{-\infty}^{\infty} - \Psi^* \left[ \frac{\partial V}{\partial x} \right] \Psi \dif x\\
+        &= \left\langle - \frac{\partial V}{\partial x} \right\rangle.
+    \end{align}
+\end{sol}
+
+\begin{prob} \textbf{Problem 1.8}\\
+    Suppose you add a constant $V_0$ to the potential energy (by "constant" I mean independent of $x$ as well as $t$). In classical mechanics this doesn't change anything, but what about \textit{quantum mechanics}? Show that the wave function picks up a time-dependent phase factor: $\exp(-i V_0 t / \hbar)$. What effect does this have on the expectation value of a dynamical variable?
+\end{prob}
+
+\begin{sol}
+    Suppose the wave function $\Psi$ satisfies the Schrödinger equation without the constant $V_0$:
+    \begin{equation}
+        i \hbar \frac{\partial \Psi}{\partial t} = -\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2} + V \Psi.
+    \end{equation}
+    Then, for the wave function $\Psi' = \Psi e^{-i V_0 t / \hbar}$, we have
+    \begin{align}
+        i \hbar \frac{\partial \Psi'}{\partial t} &= i \hbar \frac{\partial}{\partial t} (\Psi e^{-i V_0 t / \hbar})\\
+        &= i \hbar \left( \frac{\partial \Psi}{\partial t} e^{-i V_0 t / \hbar} - \frac{i V_0}{\hbar} \Psi e^{-i V_0 t / \hbar} \right)\\
+        &= \left(-\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2} + V \Psi \right) e^{-i V_0 t / \hbar} + V_0 \Psi e^{-i V_0 t / \hbar}\\
+        &= -\frac{\hbar^2}{2m} \frac{\partial^2 \Psi'}{\partial x^2} + (V + V_0) \Psi',
+    \end{align}
+    which is the Schrödinger equation with the constant $V_0$. 
+    Thus, the wave function $\Psi$ picks up a time-dependent phase factor $\exp(-i V_0 t / \hbar)$.
+    The expectation value of a dynamical variable is not affected by the phase factor, since the $x$-independent phase factor is canceled out when taking the expectation value.
+\end{sol}
+
+\end{document}

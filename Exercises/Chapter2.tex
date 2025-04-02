@@ -1,0 +1,677 @@
+\documentclass[en, oneside]{vivi}
+
+\ProjectInfos{Introduction to Quantum Mechanics}{PHY-512}{Spring, 2025}{Chapter2}{Due date: }{Vivi}[https://github.com/Vivi26499]{24S153073}
+
+\begin{document}
+
+\begin{prob}
+    Prove the following three theorems:
+    \begin{enumerate}[label=(\alph*)]
+        \item For normalizable solutions, the separation constant $E$ must be real. 
+        \textit{Hint: Write $E$ (in Equation 2.7) as $E_0 + i\Gamma$ (with $E_0$ and $\Gamma$ real), 
+        and show that if Equation 1.20 is to hold for all $t$, $\Gamma$ must be zero.}
+        \item The time-independent wave function $\psi(x)$ can always be taken to be real (unlike $\Psi(x, t)$, which is necessarily complex). 
+        \textit{Hint: If $\psi(x)$ satisfies Equation 2.5, for a given $E$, so too does its complex conjugate, 
+        and hence also the real linear combinations ($\psi + \psi^*$) and $i(\psi - \psi^*)$.}
+        \item If $V(x)$ is an even function (that is, $V(-x) = V(x)$) then $\psi(x)$ can always be taken to be either even or odd. 
+        \textit{Hint: If $\psi(x)$ satisfies Equation 2.5, for a given $E$, so too does $\psi(-x)$, 
+        and hence also the even and odd linear combinations $\psi(x) \pm \psi(-x)$.}
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    \begin{enumerate}[label=(\alph*)]
+        \item Suppose $E = E_0 + i\Gamma$ for some real $E_0$ and $\Gamma$. Then the time-dependent wave function $\Psi(x, t)$ can be written as
+        \begin{align*}
+            \Psi(x, t) &= \psi(x)e^{-iEt/\hbar}\\
+            &= \psi(x)e^{-i(E_0 + i\Gamma)t/\hbar}\\
+            &= \psi(x)e^{\Gamma t/\hbar}e^{-iE_0t/\hbar}.
+        \end{align*}
+        Thus,
+        \begin{align*}
+            \int_{-\infty}^{\infty}|\Psi(x, t)|^2 \dif x &= \int_{-\infty}^{\infty}|\psi(x)|^2e^{2\Gamma t/\hbar} \dif x\\
+            &= e^{2\Gamma t/\hbar}\int_{-\infty}^{\infty}|\psi(x)|^2 \dif x,
+        \end{align*}
+        which varies with time, unless $\Gamma = 0$. Therefore, the separation constant $E$ must be real.
+        \item If $\psi(x)$ satisfies $\hat H \psi = E\psi$, then its complex conjugate $\psi^*(x)$ also satisfies $\hat H \psi^* = E\psi^*$.\\
+        If $\psi_1(x)$ and $\psi_2(x)$ are two solutions of $\hat H \psi = E\psi$, then any linear combination $\psi_3(x) = c_1\psi_1(x) + c_2\psi_2(x)$ is also a solution.\\
+        Thus for any complex solution $\psi(x)$, we can construct two real solutions $\psi_1(x) = \frac{1}{2}(\psi(x) + \psi^*(x))$ and $\psi_2(x) = \frac{1}{2i}(\psi(x) - \psi^*(x))$.
+        \item If $\psi(x)$ satisfies $ -\frac{\hbar^2}{2m}\frac{d^2\psi(x)}{ \dif x^2} + V(x)\psi(x) = E\psi(x)$, then
+        \begin{align*}
+            -\frac{\hbar^2}{2m}\frac{d^2\psi(-x)}{d(-x)^2} + V(-x)\psi(-x) &= -\frac{\hbar^2}{2m}\frac{d^2\psi(-x)}{ \dif x^2} + V(x)\psi(-x)\\
+            &= E\psi(-x),
+        \end{align*}
+        which means $\psi(-x)$ is also a solution. 
+        Thus we can construct two solutions $\psi_1(x) = \frac{1}{2}(\psi(x) + \psi(-x))$, which is even, and $\psi_2(x) = \frac{1}{2}(\psi(x) - \psi(-x))$, which is odd.
+    \end{enumerate}
+\end{sol}
+
+\begin{prob}
+    Show that $E$ must exceed the minimum value of $V(x)$, for every normalizable solution to the time-independent Schrödinger equation. 
+    What is the classical analog to this statement? \textit{Hint: Rewrite Equation 2.5 in the form}
+    \begin{equation*}
+        \frac{d^2\psi}{ \dif x^2} = \frac{2m}{\hbar^2} [V(x) - E] \psi.
+    \end{equation*}
+    \textit{if $E < V_{\min}$, then $\psi$ and its second derivative always have the same sign—argue that such a function cannot be normalized.}
+\end{prob}
+
+\begin{sol}
+    Rewrite time-independent Schrödinger equation as
+    \begin{equation*}
+        \frac{d^2\psi}{ \dif x^2} = \frac{2m}{\hbar^2} [V(x) - E] \psi.
+    \end{equation*}
+    If $E < V_{\min}$, then $V(x) - E > 0$ for all $x$. Thus $\psi$ and its second derivative always have the same sign, which means $\psi$ cannot be normalized.\\
+    In classical mechanics, this statement is analogous that if the total energy of a particle is less than the minimum potential energy, the particle's kinetic energy is negative, then the particle cannot exist in the system.
+\end{sol}
+
+\begin{prob}
+    Show that there is no acceptable solution to the (time-independent) Schrödinger equation for the infinite square well with $E = 0$ or $E < 0$. 
+    (This is a special case of the general theorem in Problem 2.2, but this time do it by explicitly solving the Schrödinger equation, 
+    and showing that you cannot satisfy the boundary conditions.)
+\end{prob}
+
+\begin{sol}
+    When $E = 0$, the time-independent Schrödinger equation for the infinite square well becomes
+    \begin{equation*}
+        \frac{d^2\psi}{ \dif x^2} = -\frac{2mE}{\hbar^2} \psi = 0,
+    \end{equation*}
+    which leads to $\psi(x) = 0$, which is not normalizable.\\
+    When $E < 0$, the time-independent Schrödinger equation for the infinite square well becomes
+    \begin{equation*}
+        \frac{d^2\psi}{ \dif x^2} = \kappa^2 \psi,
+    \end{equation*}
+    where $\kappa = \frac{\sqrt{-2mE}}{\hbar}$. The general solution to this equation is
+    \begin{equation*}
+        \psi(x) = A e^{\kappa x} + B e^{-\kappa x},
+    \end{equation*}
+    then the boundary conditions $\psi(0) = \psi(a) = 0$ lead to $A = B = 0$, which means $\psi(x) = 0$, which is not normalizable.
+\end{sol}
+
+\begin{prob}
+    Calculate $\langle x \rangle$, $\langle x^2 \rangle$, $\langle p \rangle$, $\langle p^2 \rangle$, $\sigma_x$, and $\sigma_p$, 
+    for the nth stationary state of the infinite square well. Check that the uncertainty principle is satisfied. 
+    Which state comes closest to the uncertainty limit?
+\end{prob}
+
+\begin{sol}
+    The expectation value of $x$ is
+    \begin{align*}
+        \langle x \rangle &= \int_{0}^{a}x|\psi_n(x)|^2 \dif x\\
+        &= \int_{0}^{a}x\left(\sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right)\right)^2 \dif x\\
+        &= \frac{2}{a} \int_{0}^{a} x \sin^2\left(\frac{n\pi x}{a}\right) \dif x\\
+        &= \frac{1}{a} \left[ \frac{1}{2}x^2 - \frac{a}{2n\pi} x \sin \frac{2 n \pi}{a} x - \frac{a^2}{4n^2\pi^2} \cos \frac{2 n \pi}{a} x \right]_0^a\\
+        &= \frac{a}{2}.
+    \end{align*}
+    The expectation value of $x^2$ is
+    \begin{align*}
+        \langle x^2 \rangle &= \int_{0}^{a}x^2|\psi_n(x)|^2 \dif x\\
+        &= \int_{0}^{a}x^2\left(\sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right)\right)^2 \dif x\\
+        &= \frac{2}{a} \int_{0}^{a} x^2 \sin^2\left(\frac{n\pi x}{a}\right) \dif x\\
+        &= \frac{1}{a} \left[ \frac{1}{3}x^3 - \frac{a}{2n\pi} x^2 \sin \frac{2 n \pi}{a} x - \frac{a^2}{2 n^2 \pi^2} x \cos \frac{2 n \pi}{a} x + \frac{a^3}{4 n^3 \pi^3} \sin \frac{2 n \pi}{a} x \right]_0^a\\
+        &= \frac{1}{a} \left( \frac{a^3}{3} - \frac{a^3}{2 n^2 \pi^2} \right)\\
+        &= a^2 \left( \frac{1}{3} - \frac{1}{2 n^2 \pi^2} \right).
+    \end{align*}
+    The expectation value of $p$ is
+    \begin{align*}
+        \langle p \rangle &= m \frac{\dif \langle x \rangle}{\dif t}\\
+        &= 0
+    \end{align*}
+    The expectation value of $p^2$ is
+    \begin{align*}
+        \langle p^2 \rangle &= \int_{0}^{a} \psi_n^*(x) \left( \frac{\hbar}{i} \frac{\dif}{\dif x} \right)^2 \psi_n \dif x\\
+        &= -\hbar^2 \int_{0}^{a} \psi_n^*(x) \frac{\dif^2 \psi_n}{\dif x^2} \dif x\\
+        &= -\hbar^2 (-\frac{2 m E_n}{\hbar^2}) \int_{0}^{a} |\psi_n(x)|^2 \dif x\\
+        &= 2 m E_n\\
+        &= \frac{n^2 \pi^2 \hbar^2}{a^2}.
+    \end{align*}
+    The standard deviation of $x$ is
+    \begin{align*}
+        \sigma_x &= \sqrt{\langle x^2 \rangle - \langle x \rangle^2}\\
+        &= a \sqrt{\frac{1}{12} - \frac{1}{2 n^2 \pi^2}}.
+    \end{align*}
+    The standard deviation of $p$ is
+    \begin{align*}
+        \sigma_p &= \sqrt{\langle p^2 \rangle - \langle p \rangle^2}\\
+        &= \frac{n \pi \hbar}{a}.
+    \end{align*}
+    The uncertainty principle is
+    \begin{align*}
+        \sigma_x \sigma_p &= a \sqrt{\frac{1}{12} - \frac{1}{2 n^2 \pi^2}} \cdot \frac{n \pi \hbar}{a}\\
+        &= \frac{\hbar}{2} \sqrt{\frac{n^2 \pi^2}{3} - 2}\\
+        &\geq \frac{\hbar}{2} \sqrt{\frac{\pi^2}{3} - 2}\\
+        &\geq \frac{\hbar}{2}.
+    \end{align*}
+\end{sol}
+
+\begin{prob}
+    A particle in the infinite square well has as its initial wave function an even mixture of the first two stationary states:
+    \begin{equation*}
+        \Psi(x, 0) = A [\psi_1(x) + \psi_2(x)].
+    \end{equation*}
+    \begin{enumerate}[label=(\alph*)]
+        \item Normalize $\Psi(x, 0)$. (That is, find $A$. This is very easy, if you exploit the orthonormality of $\psi_1$ and $\psi_2$. 
+        Recall that, having normalized $\Psi$ at $t = 0$, you can rest assured that it stays normalized—if you doubt this, check it explicitly after doing part (b).)
+        \item Find $\Psi(x, t)$ and $|\Psi(x, t)|^2$. Express the latter as a sinusoidal function of time, as in Example 2.1. 
+        To simplify the result, let $\omega = \pi^2 \hbar / 2ma^2$.
+        \item Compute $\langle x \rangle$. Notice that it oscillates in time. What is the angular frequency of the oscillation? 
+        What is the amplitude of the oscillation? (If your amplitude is greater than $a/2$, go directly to jail.)
+        \item Compute $\langle p \rangle$. (As Peter Lorre would say, “Do it ze kveek vay, Johnny!”)
+        \item If you measured the energy of this particle, what values might you get, and what is the probability of getting each of them? 
+        Find the expectation value of $H$. How does it compare with $E_1$ and $E_2$?
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    \begin{enumerate} [label=(\alph*)]
+        \item \begin{align*}
+            1 &= \int_{0}^{a}|\Psi(x, 0)|^2 \dif x\\
+            &= A^2 \int_{0}^{a} [\psi_1(x) + \psi_2(x)]^* [\psi_1(x) + \psi_2(x)] \dif x\\
+            &= A^2 \int_{0}^{a} \left[|\psi_1(x)|^2 + |\psi_2(x)|^2 + \psi_1^*(x)\psi_2(x) + \psi_2^*(x)\psi_1(x) \right] \dif x\\
+            &= 2 A^2,
+        \end{align*}
+        so $A = \frac{1}{\sqrt{2}}$.
+        \item \begin{align*}
+            \Psi(x, t) &= \frac{1}{\sqrt{2}} \left[\psi_1(x) e^{-iE_1t/\hbar} + \psi_2(x) e^{-iE_2t/\hbar}\right]\\
+            &= \frac{1}{\sqrt{2}} \left[\psi_1(x) e^{-i \omega t} + \psi_2(x) e^{-4i \omega t}\right]\\
+            &= \frac{1}{\sqrt{2}} \left[\sqrt{\frac{2}{a}} \sin\left(\frac{\pi x}{a}\right) e^{-i \omega t} + \sqrt{\frac{2}{a}} \sin\left(\frac{2\pi x}{a}\right) e^{-4i \omega t}\right]\\
+            &= \frac{1}{\sqrt{a}} e^{-i \omega t} \left[\sin\left(\frac{\pi x}{a}\right) + \sin\left(\frac{2\pi x}{a}\right) e^{-3i \omega t}\right].
+        \end{align*}
+        \begin{align*}
+            |\Psi(x, t)|^2 &= \frac{1}{a} \left[\sin\left(\frac{\pi x}{a}\right) + \sin\left(\frac{2\pi x}{a}\right) e^{-3i \omega t}\right] \left[\sin\left(\frac{\pi x}{a}\right) + \sin\left(\frac{2\pi x}{a}\right) e^{-3i \omega t}\right]^*\\
+            &= \frac{1}{a} \left[\sin\left(\frac{\pi x}{a}\right) + \sin\left(\frac{2\pi x}{a}\right) e^{-3i \omega t}\right] \left[\sin\left(\frac{\pi x}{a}\right) + \sin\left(\frac{2\pi x}{a}\right) e^{3i \omega t}\right]\\
+            &= \frac{1}{a} \left[\sin^2\left(\frac{\pi x}{a}\right) + \sin^2\left(\frac{2\pi x}{a}\right) + \sin\left(\frac{\pi x}{a}\right)\sin\left(\frac{2\pi x}{a}\right) \left(e^{-3i \omega t} + e^{3i \omega t}\right)\right]\\
+            &= \frac{1}{a} \left[\sin^2\left(\frac{\pi x}{a}\right) + \sin^2\left(\frac{2\pi x}{a}\right) + 2 \sin\left(\frac{\pi x}{a}\right)\sin\left(\frac{2\pi x}{a}\right) \cos(3\omega t)\right].
+        \end{align*}
+        \item \begin{align*}
+            \langle x \rangle &= \int_{0}^{a}x|\Psi(x, t)|^2 \dif x\\
+            &= \frac{1}{a} \int_{0}^{a}x \left[\sin^2\left(\frac{\pi x}{a}\right) + \sin^2\left(\frac{2\pi x}{a}\right) + 2 \sin\left(\frac{\pi x}{a}\right)\sin\left(\frac{2\pi x}{a}\right) \cos(3\omega t)\right] \dif x\\
+            &= \frac{1}{a} \int_{0}^{a}x \left[\sin^2\left(\frac{\pi x}{a}\right) + \sin^2\left(\frac{2\pi x}{a}\right) \dif x \right] + \frac{2}{a} \cos(3\omega t) \int_{0}^{a}x \sin\left(\frac{\pi x}{a}\right)\sin\left(\frac{2\pi x}{a}\right) \dif x\\
+            &= \frac{1}{a} \left[\frac{a^2}{4} + \frac{a^2}{4}\right] + \frac{1}{a} \cos(3\omega t) \int_{0}^{a}x \left[ \cos\left(\frac{\pi x}{a}\right) - \cos\left(\frac{3\pi x}{a}\right) \right] \dif x\\
+            &= \frac{a}{2} + \frac{1}{a} \cos(3\omega t) \left[ \frac{a}{\pi} x \sin\left(\frac{\pi x}{a}\right) + \frac{a^2}{\pi^2} \cos\left(\frac{\pi x}{a}\right) - \frac{a}{3\pi} x \sin\left(\frac{3\pi x}{a}\right) - \frac{a^2}{9\pi^2} \cos\left(\frac{3\pi x}{a}\right) \right]_0^a\\
+            &= \frac{a}{2} + \frac{1}{a} \cos(3\omega t) \left[ - \frac{a^2}{\pi^2} - \frac{a^2}{\pi^2} + \frac{a^2}{9\pi^2} + \frac{a^2}{9\pi^2} \right]\\
+            &= \frac{a}{2} - \frac{16}{9\pi^2} a \cos(3\omega t)\\
+            &= \frac{a}{2} \left[ 1 - \frac{32}{9\pi^2} \cos(3\omega t) \right],
+        \end{align*}
+        where the angular frequency of the oscillation is $3\omega = \frac{3\pi^2 \hbar}{2ma^2}$ and the amplitude of the oscillation is $\frac{16 a}{9\pi^2} \approx 0.18 a$.
+        \item \begin{align*}
+            \langle p \rangle &= m \frac{\dif \langle x \rangle}{\dif t}\\
+            &= m \frac{\dif}{\dif t} \left[ \frac{a}{2} \left( 1 - \frac{32}{9\pi^2} \cos(3\omega t) \right) \right]\\
+            &= \frac{16 m a}{9\pi^2} 3\omega \sin(3\omega t)\\
+            &= \frac{8 \hbar}{3a} \sin(3\omega t).
+        \end{align*}
+        \item The possible values of energy are $E_1 = \frac{\pi^2 \hbar^2}{2ma^2}$ and $E_2 = \frac{2\pi^2 \hbar^2}{ma^2}$, with the probability of getting each of them being $\frac{1}{2}$. The expectation value of $H$ is
+        \begin{align*}
+            \langle H \rangle &= \frac{1}{2} E_1 + \frac{1}{2} E_2\\
+            &= \frac{5\pi^2 \hbar^2}{4ma^2}.
+        \end{align*}
+    \end{enumerate}
+\end{sol}
+
+\begin{prob}
+    Although the overall phase constant of the wave function is of no physical significance (it cancels out whenever you calculate a measurable quantity), the relative phase of the coefficients in Equation 2.17 does matter. For example, suppose we change the relative phase of $\psi_1$ and $\psi_2$ in Problem 2.5:
+    \begin{equation*}
+        \Psi(x, 0) = A \left[ \psi_1(x) + e^{i\phi}\psi_2(x) \right],
+    \end{equation*}
+    where $\phi$ is some constant. Find $\Psi(x, t)$, $|\Psi(x, t)|^2$, and $\langle x \rangle$, and compare your results with what you got before. Study the special cases $\phi = \pi/2$ and $\phi = \pi$. (For a graphical exploration of this problem see the applet in footnote 9 of this chapter.)
+\end{prob}
+
+\begin{sol}
+    \begin{align*}
+        1 &= \int_{0}^{a}|\Psi(x, 0)|^2 \dif x\\
+        &= A^2 \int_{0}^{a} \left[|\psi_1(x)|^2 + |\psi_2(x)|^2 + e^{i\phi}\psi_1^*(x)\psi_2(x) + e^{-i\phi}\psi_2^*(x)\psi_1(x) \right] \dif x\\
+        &= 2 A^2,
+    \end{align*}
+    so $A = \frac{1}{\sqrt{2}}$.
+    \begin{align*}
+        \Psi(x, t) &= \frac{1}{\sqrt{2}} \left[\psi_1(x) e^{-iE_1t/\hbar} + e^{i\phi}\psi_2(x) e^{-iE_2t/\hbar}\right]\\
+        &= \frac{1}{\sqrt{2}} \left[\psi_1(x) e^{-i \omega t} + e^{i\phi}\psi_2(x) e^{-4i \omega t}\right]\\
+        &= \frac{1}{\sqrt{2}} \left[\psi_1(x) e^{-i \omega t} + e^{i\phi}\psi_2(x) e^{-4i \omega t}\right]\\
+        &= \frac{1}{\sqrt{2}} \left[\sqrt{\frac{2}{a}} \sin\left(\frac{\pi x}{a}\right) e^{-i \omega t} + e^{i\phi}\sqrt{\frac{2}{a}} \sin\left(\frac{2\pi x}{a}\right) e^{-4i \omega t}\right]\\
+        &= \frac{1}{\sqrt{a}} e^{-i \omega t} \left[\sin\left(\frac{\pi x}{a}\right) + \sin\left(\frac{2\pi x}{a}\right) e^{i\phi} e^{-3i \omega t}\right].
+    \end{align*}
+    \begin{align*}
+        |\Psi(x, t)|^2 &= \frac{1}{a} \left[\sin^2\left(\frac{\pi x}{a}\right) + \sin^2\left(\frac{2\pi x}{a}\right) + \sin\left(\frac{\pi x}{a}\right)\sin\left(\frac{2\pi x}{a}\right) \left( e^{i\phi} e^{-3i \omega t} + e^{-i\phi} e^{3i \omega t} \right)\right]\\
+        &= \frac{1}{a} \left[\sin^2\left(\frac{\pi x}{a}\right) + \sin^2\left(\frac{2\pi x}{a}\right) + 2 \sin\left(\frac{\pi x}{a}\right)\sin\left(\frac{2\pi x}{a}\right) \cos(3\omega t - \phi)\right].
+    \end{align*}
+    Then $\langle x \rangle = \frac{a}{2} \left[ 1 - \frac{32}{9\pi^2} \cos(3\omega t - \phi) \right]$.\\
+    When $\phi = \pi/2$, $\langle x \rangle = \frac{a}{2} \left[ 1 + \frac{32}{9\pi^2} \sin(3\omega t) \right]$,\\
+    When $\phi = \pi$, $\langle x \rangle = \frac{a}{2} \left[ 1 + \frac{32}{9\pi^2} \cos(3\omega t) \right]$.
+\end{sol}
+
+\begin{prob}
+    A particle in the infinite square well has the initial wave function
+    \begin{equation*}
+        \Psi(x, 0) =
+        \begin{cases}
+            Ax, & 0 \leq x \leq a/2, \\
+            A(a - x), & a/2 \leq x \leq a.
+        \end{cases}
+    \end{equation*}
+    \begin{enumerate}[label=(\alph*)]
+        \item Sketch $\Psi(x, 0)$, and determine the constant $A$.
+        \item Find $\Psi(x, t)$.
+        \item What is the probability that a measurement of the energy would yield the value $E_1$?
+        \item Find the expectation value of the energy, using Equation 2.21.
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    \begin{enumerate}[label=(\alph*)]
+        \item \begin{align*}
+            1 &= \int_{0}^{a}|\Psi(x, 0)|^2 \dif x\\
+            &= A^2 \left[ \int_{0}^{a/2}x^2 \dif x + \int_{a/2}^{a}(a - x)^2 \dif x \right]\\
+            &= A^2 \left[ \frac{x^3}{3} \bigg|_{0}^{a/2} - \frac{(a - x)^3}{3} \bigg|_{a/2}^{a} \right]\\
+            &= A^2 \left[ \frac{a^3}{24} + \frac{a^3}{24} \right]\\
+            &= \frac{A^2 a^3}{12},
+        \end{align*}
+        so $A = \frac{2 \sqrt{3}}{a\sqrt{a}}$.
+        \item \begin{align*}
+            c_n &= \int_{0}^{a} \Psi(x, 0) \psi_n^*(x) \dif x\\
+            &= A \sqrt{\frac{2}{a}} \left[\int_{0}^{a/2} x \sin\left(\frac{n\pi x}{a}\right) \dif x + \int_{a/2}^{a} (a - x) \sin\left(\frac{n\pi x}{a}\right) \dif x\right]\\
+            &= A \sqrt{\frac{2}{a}} \frac{a}{n\pi} \left[ -x \cos \frac{n\pi x}{a} \bigg|_{0}^{a/2} + \int_{0}^{a/2} \cos \frac{n\pi x}{a} \dif x - (a - x) \cos \frac{n\pi x}{a} \bigg|_{a/2}^{a} - \int_{a/2}^{a} \cos \frac{n\pi x}{a} \dif x \right]\\
+            &= A \sqrt{\frac{2}{a}} \frac{a}{n\pi} \left[\frac{a}{n\pi} \sin \frac{n\pi x}{a} \bigg|_{0}^{a/2} - \frac{a}{n\pi} \sin \frac{n\pi x}{a} \bigg|_{a/2}^{a} \right]\\
+            &= A \sqrt{\frac{2}{a}} \frac{a}{n\pi} \left[\frac{a}{n\pi} \sin \frac{n\pi}{2} + \frac{a}{n\pi} \sin \frac{n\pi}{2} \right]\\
+            &= \frac{4 \sqrt{6}}{n^2 \pi^2} \sin \frac{n\pi}{2}\\
+            &= \begin{cases}
+                \frac{4 \sqrt{6}}{n^2 \pi^2} (-1)^{(n - 1)/2}, & n = 1, 3, 5, \cdots,\\
+                0, & n = 2, 4, 6, \cdots.
+            \end{cases}
+        \end{align*}
+        So \begin{align*}
+            \Psi(x, t) &= \sum_{n = 1, 3, 5, \cdots} c_n \psi_n(x) e^{-iE_n t/\hbar}\\
+            &= \sum_{n = 1, 3, 5, \cdots} \frac{4 \sqrt{6}}{n^2 \pi^2} (-1)^{(n - 1)/2} \sqrt{\frac{2}{a}} \sin\left(\frac{n\pi x}{a}\right) e^{-iE_n t/\hbar}\\
+            &= \frac{4 \sqrt{6}}{\pi^2} \sqrt{\frac{2}{a}} \sum_{n = 1, 3, 5, \cdots} \frac{(-1)^{(n - 1)/2}}{n^2} \sin\left(\frac{n\pi x}{a}\right) e^{-iE_n t/\hbar},
+        \end{align*}
+        where $E_n = \frac{n^2 \pi^2 \hbar^2}{2ma^2}$.
+        \item The probability that a measurement of the energy would yield the value $E_1$ is
+        \begin{align*}
+            P(E_1) &= |c_1|^2\\
+            &= \left(\frac{4 \sqrt{6}}{\pi^2}\right)^2\\
+            &= \frac{96}{\pi^4} \approx 0.9855
+        \end{align*}
+        \item The expectation value of the energy is
+        \begin{align*}
+            \langle H \rangle &= \sum_{n = 1, 3, 5, \cdots} |c_n|^2 E_n\\
+            &= \sum_{n = 1, 3, 5, \cdots} \left( \frac{4 \sqrt{6}}{n^2 \pi^2} \right)^2 \frac{n^2 \pi^2 \hbar^2}{2ma^2}\\
+            &= \sum_{n = 1, 3, 5, \cdots} \frac{48 \hbar^2}{n^2 \pi^2 m a^2}\\
+            &= \frac{48 \hbar^2}{\pi^2 m a^2} \sum_{n = 1, 3, 5, \cdots} \frac{1}{n^2}\\
+            &= \frac{48 \hbar^2}{\pi^2 m a^2} \frac{\pi^2}{8}\\
+            &= \frac{6 \hbar^2}{m a^2}.
+        \end{align*}
+    \end{enumerate}
+\end{sol}
+
+\begin{prob}
+    A particle of mass $m$ in the infinite square well (of width $a$) starts out in the state
+    \begin{equation*}
+        \Psi(x, 0) =
+        \begin{cases}
+            A, & 0 \leq x \leq a/2, \\
+            0, & a/2 < x \leq a,
+        \end{cases}
+    \end{equation*}
+    for some constant $A$, so it is (at $t = 0$) equally likely to be found at any point in the left half of the well. What is the probability that a measurement of the energy (at some later time $t$) would yield the value $\pi^2 \hbar^2 / 2ma^2$?
+\end{prob}
+
+\begin{sol}
+    \begin{align*}
+        1 &= \int_{0}^{a}|\Psi(x, 0)|^2 \dif x\\
+        &= A^2 \left[ \int_{0}^{a/2} \dif x \right]\\
+        &= \frac{A^2 a}{2},
+    \end{align*}
+    so $A = \sqrt{\frac{2}{a}}$.
+    \begin{align*}
+        c_1 &= \int_{0}^{a} \Psi(x, 0) \psi_1^*(x) \dif x\\
+        &= A \sqrt{\frac{2}{a}} \int_{0}^{a/2} \sin\left(\frac{\pi x}{a}\right) \dif x\\
+        &= A \sqrt{\frac{2}{a}} \frac{a}{\pi} \left[ -\cos\left(\frac{\pi x}{a}\right) \bigg|_{0}^{a/2} \right]\\
+        &= \frac{2}{\pi}.
+    \end{align*}
+    The probability that a measurement of the energy would yield the value $\pi^2 \hbar^2 / 2ma^2 = E_1$ is
+    \begin{align*}
+        P(E_1) &= |c_1|^2\\
+        &= \left(\frac{2}{\pi}\right)^2\\
+        &= \frac{4}{\pi^2} \approx 0.4053.
+    \end{align*}
+\end{sol}
+
+\begin{prob}
+    For the wave function in Example 2.2, find the expectation value of $H$, at time $t = 0$, the “old fashioned” way:
+    \begin{equation*}
+        \langle H \rangle = \int \Psi(x, 0)^* \hat{H} \Psi(x, 0) \dif x.
+    \end{equation*}
+    Compare the result we got in Example 2.3. Note: Because $\langle H \rangle$ is independent of time, there is no loss of generality in using $t = 0$.
+\end{prob}
+
+\begin{sol}
+    \begin{align*}
+        \hat H \Psi(x, 0) &= \frac{-\hbar^2}{2m} \frac{\dif^2}{\dif x^2} \Psi(x, 0)\\
+        &= \frac{-\hbar^2}{2m} \frac{\dif^2}{\dif x^2} \left[ Ax(a - x) \right]\\
+        &= \frac{-\hbar^2}{2m} (-2A)\\
+        &= \frac{\hbar^2 A}{m}.
+    \end{align*}
+    \begin{align*}
+        \langle H \rangle &= \int \Psi(x, 0)^* \hat{H} \Psi(x, 0) \dif x\\
+        &= \frac{\hbar^2 A^2}{m} \int_{0}^{a} x(a - x) \dif x\\
+        &= \frac{\hbar^2 A^2}{m} \left[ \frac{ax^2}{2} - \frac{x^3}{3} \right]_0^a\\
+        &= \frac{\hbar^2 A^2 a^3}{6m}\\
+        &= \frac{5 \hbar^2}{m a^2}.
+    \end{align*}
+\end{sol}
+
+\begin{prob}
+    \begin{enumerate}[label=(\alph*)]
+        \item Construct $\psi_2(x)$.
+        \item Sketch $\psi_0$, $\psi_1$, and $\psi_2$.
+        \item Check the orthogonality of $\psi_0$, $\psi_1$, and $\psi_2$, by explicit integration. 
+        \textit{Hint: If you exploit the even-ness and odd-ness of the functions, there is really only one integral left to do.}
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    \begin{enumerate}[label=(\alph*)]
+        \item \begin{equation*}
+            \psi_0 = \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} e^{-\frac{m \omega}{2\hbar}x^2},
+        \end{equation*}
+        \begin{align*}
+            \hat a_+ \psi_0 &= \frac{1}{\sqrt{2\hbar m \omega}} \left( -i \hat p + m \omega \hat x \right) \psi_0\\
+            &= \frac{1}{\sqrt{2\hbar m \omega}} \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \left( - \hbar \frac{\dif}{\dif x} + m \omega x \right) e^{-\frac{m \omega}{2\hbar}x^2}\\
+            &= \frac{1}{\sqrt{2\hbar m \omega}} \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \left[ - \hbar \left( -\frac{m \omega}{\hbar} x \right) + m \omega x \right] e^{-\frac{m \omega}{2\hbar}x^2}\\
+            &= \frac{1}{\sqrt{2\hbar m \omega}} \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} 2 m \omega x e^{-\frac{m \omega}{2\hbar}x^2}.
+        \end{align*}
+        \begin{align*}
+            (\hat a_+)^2 \psi_0 &= \frac{1}{\sqrt{2\hbar m \omega}} \left( -i \hat p + m \omega \hat x \right) \left( \hat a_+ \psi_0 \right)\\
+            &= \frac{1}{2 \hbar m \omega} \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} 2 m \omega \left( - \hbar \frac{\dif}{\dif x} + m \omega x \right) x e^{-\frac{m \omega}{2\hbar}x^2}\\
+            &= \frac{1}{2 \hbar m \omega} \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} 2 m \omega \left[ - \hbar \left( 1 -\frac{m \omega}{\hbar} x^2 \right) + m \omega x^2 \right] e^{-\frac{m \omega}{2\hbar}x^2}\\
+            &= \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \left[\frac{2 m \omega}{\hbar} x^2 - 1\right] e^{-\frac{m \omega}{2\hbar}x^2}.
+        \end{align*}
+        Therefore,
+        \begin{align*}
+            \psi_2 &= \frac{1}{\sqrt{2}} \left( \hat a_+ \right)^2 \psi_0\\
+            &= \frac{1}{\sqrt{2}} \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \left[\frac{2 m \omega}{\hbar} x^2 - 1\right] e^{-\frac{m \omega}{2\hbar}x^2}.
+        \end{align*}
+        \item 
+        \item As $\psi_0$ and $\psi_2$ are even and $\psi_1$ is odd, the only integral left to do is
+        \begin{align*}
+            \int_{-\infty}^{\infty} \psi_0^* \psi_2 \dif x &= \int_{-\infty}^{\infty} \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} e^{-\frac{m \omega}{2\hbar}x^2} \frac{1}{\sqrt{2}} \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} \left[\frac{2 m \omega}{\hbar} x^2 - 1\right] e^{-\frac{m \omega}{2\hbar}x^2} \dif x\\
+            &= \frac{1}{\sqrt{2}} \left( \frac{m \omega}{\pi \hbar} \right)^{1/2} \int_{-\infty}^{\infty} \left[\frac{2 m \omega}{\hbar} x^2 - 1\right] e^{-\frac{m \omega}{\hbar}x^2} \dif x\\
+            &= \frac{1}{\sqrt{2}} \left( \frac{m \omega}{\pi \hbar} \right)^{1/2} \left[ \frac{2 m \omega}{\hbar} \int_{-\infty}^{\infty} x^2 e^{-\frac{m \omega}{\hbar}x^2} \dif x - \int_{-\infty}^{\infty} e^{-\frac{m \omega}{\hbar}x^2} \dif x \right]\\
+            &= \frac{1}{\sqrt{2}} \left( \frac{m \omega}{\pi \hbar} \right)^{1/2} \left[ \frac{2 m \omega}{\hbar} \frac{\hbar}{2 m \omega} \sqrt{\frac{\pi \hbar}{m \omega}} - \sqrt{\frac{\pi \hbar}{m \omega}} \right]\\
+            &= 0.
+        \end{align*}
+    \end{enumerate}
+\end{sol}
+
+\begin{prob}
+    \bigskip
+    \begin{enumerate}[label=(\alph*)]
+        \item Compute $\langle x \rangle$, $\langle p \rangle$, $\langle x^2 \rangle$, and $\langle p^2 \rangle$, for the states $\psi_0$ (Equation 2.60) and $\psi_1$ (Equation 2.63), by explicit integration.
+        \item Check the uncertainty principle for these states.
+        \item Compute $\langle T \rangle$ and $\langle V \rangle$ for these states. 
+        \textit{(No new integration allowed!) Is their sum what you would expect?}
+    \end{enumerate}
+\end{prob}
+
+\begin{prob}
+    Find $\langle x \rangle$, $\langle p \rangle$, $\langle x^2 \rangle$, $\langle p^2 \rangle$, and $\langle T \rangle$, for the $n$th stationary state of the harmonic oscillator, using the method of Example 2.5. 
+    Check that the uncertainty principle is satisfied.
+\end{prob}
+
+\begin{sol}
+    The expectation value of $x$ is
+    \begin{align*}
+        \langle x \rangle &= \sqrt{\frac{\hbar}{2m\omega}} \int_{-\infty}^{\infty} \psi_n^* (\hat a_+ + \hat a_-) \psi_n \dif x\\
+        &= \sqrt{\frac{\hbar}{2m\omega}} \left[ \sqrt{n + 1} \int_{-\infty}^{\infty} \psi_n^* \psi_{n+1} + \sqrt{n} \int_{-\infty}^{\infty} \psi_n^* \psi_{n-1} \dif x \right]\\
+        &= 0.
+    \end{align*}
+    Thus the expectation value of $p$ is 
+    \begin{align*}
+        \langle p \rangle &= \frac{\dif}{\dif t} \langle x \rangle\\
+        &= 0.
+    \end{align*}
+    The expectation value of $x^2$ is
+    \begin{align*}
+        \langle x^2 \rangle &= \frac{\hbar}{2m\omega} \int_{-\infty}^{\infty} \psi_n^* (\hat a_+ + \hat a_-)^2 \psi_n \dif x\\
+        &= \frac{\hbar}{2m\omega} \int_{-\infty}^{\infty} \psi_n^* (\hat a_+^2 + \hat a_-^2 + \hat a_+ \hat a_- + \hat a_- \hat a_+) \psi_n \dif x\\
+        &= \frac{\hbar}{2m\omega} \left[ \sqrt{n+1} \int_{-\infty}^{\infty} \psi_n^* \hat a_+ \psi_{n+1} + \sqrt{n} \int_{-\infty}^{\infty} \psi_n^* \hat a_- \psi_{n-1} \dif x + (n+n+1)\int_{-\infty}^{\infty} \psi_n^* \psi_n \dif x \right]\\
+        &= \frac{\hbar}{2m\omega} \left[ \sqrt{n+1} \sqrt{n+2} \int_{-\infty}^{\infty} \psi_n^* \psi_{n+2} + n \sqrt{n-1} \int_{-\infty}^{\infty} \psi_n^* \psi_{n-2} \dif x + 2n+1 \right]\\
+        &= \left( n+\frac{1}{2} \right) \frac{\hbar}{m\omega}.
+    \end{align*}
+    The expectation value of $p^2$ is
+    \begin{align*}
+        \langle p^2 \rangle &= - \frac{\hbar m \omega}{2} \int_{-\infty}^{\infty} \psi_n^* (\hat a_+ - \hat a_-)^2 \psi_n \dif x\\
+        &= - \frac{\hbar m \omega}{2} \int_{-\infty}^{\infty} \psi_n^* (\hat a_+^2 + \hat a_-^2 - \hat a_+ \hat a_- - \hat a_- \hat a_+) \psi_n \dif x\\
+        &= - \frac{\hbar m \omega}{2} \left[ \sqrt{n+1} \int_{-\infty}^{\infty} \psi_n^* \hat a_+ \psi_{n+1} + \sqrt{n} \int_{-\infty}^{\infty} \psi_n^* \hat a_- \psi_{n-1} \dif x - (n+n+1)\int_{-\infty}^{\infty} \psi_n^* \psi_n \dif x \right]\\
+        &= - \frac{\hbar m \omega}{2} \left[ \sqrt{n+1} \sqrt{n+2} \int_{-\infty}^{\infty} \psi_n^* \psi_{n+2} + n \sqrt{n-1} \int_{-\infty}^{\infty} \psi_n^* \psi_{n-2} \dif x - (2n+1) \right]\\
+        &= \left( n+\frac{1}{2} \right) \hbar m \omega.
+    \end{align*}
+    The expectation value of $T$ is
+    \begin{align*}
+        \langle T \rangle &= \frac{1}{2m} \langle p^2 \rangle\\
+        &= \frac{1}{2} \left( n+\frac{1}{2} \right) \hbar \omega.
+    \end{align*}
+    The standard deviation of $x$ is
+    \begin{align*}
+        \sigma_x &= \sqrt{\langle x^2 \rangle - \langle x \rangle^2}\\
+        &= \sqrt{\left( n+\frac{1}{2} \right) \frac{\hbar}{m\omega}}.
+    \end{align*}
+    The standard deviation of $p$ is
+    \begin{align*}
+        \sigma_p &= \sqrt{\langle p^2 \rangle - \langle p \rangle^2}\\
+        &= \sqrt{\left( n+\frac{1}{2} \right) \hbar m \omega}.
+    \end{align*}
+    The uncertainty principle is
+    \begin{align*}
+        \sigma_x \sigma_p &= \sqrt{\left( n+\frac{1}{2} \right) \frac{\hbar}{m\omega}} \sqrt{\left( n+\frac{1}{2} \right) \hbar m \omega}\\
+        &= \left( n+\frac{1}{2} \right) \hbar \geq \frac{\hbar}{2}.
+    \end{align*}
+\end{sol}
+
+\begin{prob}
+    A particle in the harmonic oscillator potential starts out in the state
+    \begin{equation*}
+        \Psi(x, 0) = A \left[ 3\psi_0(x) + 4\psi_1(x) \right].
+    \end{equation*}
+    \begin{enumerate}[label=(\alph*)]
+        \item Find $A$.
+        \item Construct $\Psi(x, t)$ and $|\Psi(x, t)|^2$. Don’t get too excited if $|\Psi(x, t)|^2$ oscillates at exactly the classical frequency; what would it have been had I specified $\psi_2(x)$, instead of $\psi_1(x)$?
+        \item Find $\langle x \rangle$ and $\langle p \rangle$. Check that Ehrenfest’s theorem (Equation 1.38) holds, for this wave function.
+        \item If you measured the energy of this particle, what values might you get, and with what probabilities?
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    \begin{enumerate}[label=(\alph*)]
+        \item \begin{align*}
+            1 &= \int_{-\infty}^{\infty} |\Psi(x, 0)|^2 \dif x\\
+            &= |A|^2 ( 9 + 16 ),
+        \end{align*}
+        so $A = \frac{1}{5}$.
+        \item \begin{align*}
+            \Psi(x, t) &= \frac{1}{5} \left[ 3\psi_0(x) e^{-iE_0t/\hbar} + 4\psi_1(x) e^{-iE_1t/\hbar} \right]\\
+            &= \frac{1}{5} \left[ 3\psi_0(x) e^{-\frac{1}{2}i\omega t} + 4\psi_1(x) e^{-\frac{3}{2}i\omega t} \right].
+        \end{align*}
+        \begin{align*}
+            |\Psi(x, t)|^2 &= \frac{1}{25} \left[ 9|\psi_0(x)|^2 + 16|\psi_1(x)|^2 + 12 \psi_0(x) \psi_1(x) (e^{i\omega t} + e^{-i\omega t}) \right]\\
+            &= \frac{1}{25} \left[ 9|\psi_0(x)|^2 + 16|\psi_1(x)|^2 + 24 \psi_0(x) \psi_1(x) \cos(\omega t) \right].
+        \end{align*}
+        \item \begin{align*}
+            \langle x \rangle &= \int_{-\infty}^{\infty} \Psi(x, 0)^* x \Psi(x, 0) \dif x\\
+            &= \frac{1}{25} \left[ 9 \int_{-\infty}^{\infty} \psi_0 x \psi_0 \dif x + 16 \int_{-\infty}^{\infty} \psi_1 x \psi_1 \dif x + 24 \cos(\omega t) \int_{-\infty}^{\infty} \psi_0 x \psi_1 \dif x \right]\\
+            &= \frac{24}{25} \cos(\omega t) \int_{-\infty}^{\infty} \psi_0 x \psi_1 \dif x\\
+            &= \frac{24}{25} \cos(\omega t) \sqrt{\frac{m \omega}{\pi \hbar}} \sqrt{\frac{2 m \omega}{\hbar}} \int_{-\infty}^\infty x e^{-\frac{m\omega}{2\hbar}x^2} x e^{-\frac{m\omega}{2\hbar}x^2} \dif x\\
+            &= \frac{24}{25} \cos(\omega t) \sqrt{\frac{1}{2\pi}} \int_{-\infty}^\infty e^{-\frac{m \omega}{\hbar}x^2} \dif x\\
+            &= \frac{24}{25} \sqrt{\frac{\hbar}{2 m \omega}} \cos(\omega t).
+        \end{align*}
+        Then,
+        \begin{align*}
+            \langle p \rangle &= m \frac{\dif}{\dif t} \langle x \rangle\\
+            &= -\frac{24}{25} \sqrt{\frac{\hbar m \omega}{2}} \sin(\omega t).
+        \end{align*}
+        We have
+        \begin{equation*}
+            \frac{\dif \langle p \rangle}{\dif t} = -\frac{24}{25} \sqrt{\frac{\hbar m \omega}{2}} \omega \cos(\omega t),
+        \end{equation*}
+        and
+        \begin{equation*}
+            \frac{\dif V}{\dif x} = m \omega^2 x.
+        \end{equation*}
+        Therefore,
+        \begin{align*}
+            - \langle \frac{\dif V}{\dif x} \rangle &= - m \omega^2 \langle x \rangle\\
+            &= - \frac{24}{25} \sqrt{\frac{\hbar m \omega}{2}} \omega \cos(\omega t)\\
+            &= \frac{\dif \langle p \rangle}{\dif t},
+        \end{align*}
+        so Ehrenfest's theorem holds.
+        \item We can get the energy $E_0 = \frac{\hbar \omega}{2}$ with probability $\frac{9}{25}$ and the energy $E_1 = \frac{3\hbar \omega}{2}$ with probability $\frac{16}{25}$.
+    \end{enumerate}
+\end{sol}
+
+\begin{prob}
+    In the ground state of the harmonic oscillator, what is the probability (correct to three significant digits) of finding the particle outside the classically allowed region?\\ 
+    \textit{Hint:} Classically, the energy of an oscillator is $E = (1/2) m \omega^2 a^2$, where $a$ is the amplitude. 
+    So the "classically allowed region" for an oscillator of energy $E$ extends from $-\sqrt{2E/m\omega^2}$ to $+\sqrt{2E/m\omega^2}$. 
+    Look in a math table under "Normal Distribution" or "Error Function" for the numerical value of the integral, or evaluate it by computer.
+\end{prob}
+
+\begin{sol}
+    Classically, 
+    \begin{equation*}
+        E_0 = \frac{1}{2} m \omega^2 x^2 = \frac{\hbar \omega}{2},
+    \end{equation*}
+    which gives us the amplitude of oscillation as
+    \begin{equation*}
+        x_0 = \sqrt{\frac{\hbar}{m \omega}},
+    \end{equation*}
+    i.e., $\xi_0 = 1$. Then for the ground state of the harmonic oscillator, 
+    \begin{equation*}
+        \psi_0 = \left( \frac{m \omega}{\pi \hbar} \right)^{1/4} e^{-\xi^2/2},
+    \end{equation*}
+    the probability of finding the particle outside the classically allowed region is
+    \begin{align*}
+        P &= 2 \int_{x_0}^{\infty} \psi_0^2 \dif x\\
+        &= 2 \sqrt{\frac{m \omega}{\pi \hbar}} \sqrt{\frac{\hbar}{m \omega}} \int_{1}^{\infty} e^{-\xi^2} \dif \xi\\
+        &\approx 0.157
+    \end{align*}
+\end{sol}
+
+\begin{prob}
+    Use the recursion formula (Equation 2.85) to work out $H_5(\xi)$ and $H_6(\xi)$. 
+    Invoke the convention that the coefficient of the highest power of $\xi$ is $2^n$ to fix the overall constant.
+\end{prob}
+
+\begin{sol}
+    $n = 5$:
+    \begin{align*}
+        a_3 &= \frac{-2 \times 4}{2 \times 3} a_1 = -\frac{4}{3} a_1\\
+        a_5 &= \frac{-2 \times 2}{4 \times 5} a_3 = -\frac{1}{5} a_3 = \frac{4}{15} a_1,
+    \end{align*}
+    then,
+    \begin{align*}
+        H_5(\xi) &= a_1 \xi + a_3 \xi^3 + a_5 \xi^5\\
+        &= a_1 \left( \xi - \frac{4}{3} \xi^3 + \frac{4}{15} \xi^5 \right),
+    \end{align*}
+    setting $a_1 = \frac{15}{4} 2^5 = 120$, we have
+    \begin{align*}
+        H_5(\xi) &= 120 \left( \xi - \frac{4}{3} \xi^3 + \frac{4}{15} \xi^5 \right)\\
+        &= 32 \xi^5 - 160 \xi^3 + 120 \xi.
+    \end{align*}
+    $n = 6$:
+    \begin{align*}
+        a_2 &= \frac{-2 \times 6}{1 \times 2} a_0 = -6 a_0,\\
+        a_4 &= \frac{-2 \times 4}{3 \times 4} a_2 = -\frac{2}{3} a_2 = 4 a_0,\\
+        a_6 &= \frac{-2 \times 2}{5 \times 6} a_4 = -\frac{2}{15} a_4 = -\frac{8}{15} a_0,
+    \end{align*}
+    then,
+    \begin{align*}
+        H_6(\xi) &= a_0 + a_2 \xi^2 + a_4 \xi^4 + a_6 \xi^6\\
+        &= a_0 \left( 1 - 6 \xi^2 + 4 \xi^4 - \frac{8}{15} \xi^6 \right).
+    \end{align*}
+    Setting $a_0 = -\frac{15}{8} 2^6 = -120$, we have
+    \begin{align*}
+        H_6(\xi) &= -120 \left( 1 - 6 \xi^2 + 4 \xi^4 - \frac{8}{15} \xi^6 \right)\\
+        &= 64 \xi^6 - 480 \xi^4 + 720 \xi^2 - 120.
+    \end{align*}
+\end{sol}
+
+\begin{prob}
+    In this problem we explore some of the more useful theorems (stated without proof) involving Hermite polynomials.
+    \begin{enumerate}[label=(\alph*)]
+        \item The Rodrigues formula says that
+        \begin{equation*}
+            H_n(\xi) = (-1)^n e^{\xi^2} \frac{\dif^n}{\dif \xi^n} e^{-\xi^2}.
+        \end{equation*}
+        Use it to derive $H_3$ and $H_4$.
+        \item The following recursion relation gives you $H_{n+1}(\xi)$ in terms of the two preceding Hermite polynomials:
+        \begin{equation*}
+            H_{n+1}(\xi) = 2\xi H_n(\xi) - 2n H_{n-1}(\xi).
+        \end{equation*}
+        Use it, together with your answer in (a), to obtain $H_5$ and $H_6$.
+        \item If you differentiate an $n$th-order polynomial, you get a polynomial of order $(n - 1)$. 
+        For the Hermite polynomials, in fact,
+        \begin{equation*}
+            \frac{\dif H_n}{\dif \xi} = 2n H_{n-1}(\xi).
+        \end{equation*}
+        Check this, by differentiating $H_5$ and $H_6$.
+        \item $H_n(\xi)$ is the $n$th $z$-derivative, at $z = 0$, of the generating function 
+        \begin{equation*}
+            e^{-z^2 + 2z\xi} = \sum_{n=0}^\infty \frac{z^n}{n!} H_n(\xi).
+        \end{equation*}
+        Use this to obtain $H_1$, $H_2$, and $H_3$.
+    \end{enumerate}
+\end{prob}
+
+\begin{sol}
+    \begin{enumerate}[label=(\alph*)]
+        \item \begin{align*}
+            \frac{\dif}{ \dif \xi} e^{-\xi^2} &= -2\xi e^{-\xi^2},\\
+            \frac{\dif^2}{\dif \xi^2} e^{-\xi^2} &= \frac{\dif}{\dif \xi} (-2\xi e^{-\xi^2})\\
+            &= (4\xi^2 - 2) e^{-\xi^2},\\
+            \frac{\dif^3}{\dif \xi^3} e^{-\xi^2} &= \frac{\dif}{\dif \xi} (4\xi^2 - 2) e^{-\xi^2}\\
+            &= (-8\xi^3 + 12\xi) e^{-\xi^2},\\
+            \frac{\dif^4}{\dif \xi^4} e^{-\xi^2} &= \frac{\dif}{\dif \xi} (-8\xi^3 + 12\xi) e^{-\xi^2}\\
+            &= (16\xi^4 - 48\xi^2 + 12) e^{-\xi^2}.
+        \end{align*}
+        Therefore, we have
+        \begin{align*}
+            H_3(\xi) &= (-1)^3 e^{\xi^2} \frac{\dif^3}{\dif \xi^3} e^{-\xi^2}\\
+            &= -e^{\xi^2} (-8\xi^3 + 12\xi) e^{-\xi^2}\\
+            &= 8\xi^3 - 12\xi,\\
+            H_4(\xi) &= (-1)^4 e^{\xi^2} \frac{\dif^4}{\dif \xi^4} e^{-\xi^2}\\
+            &= e^{\xi^2} (16\xi^4 - 48\xi^2 + 12) e^{-\xi^2}\\
+            &= 16\xi^4 - 48\xi^2 + 12.
+        \end{align*}
+        \item \begin{align*}
+            H_5(\xi) &= 2\xi H_4(\xi) - 2 \times 4 H_3(\xi)\\
+            &= 2\xi (16\xi^4 - 48\xi^2 + 12) - 8(8\xi^3 - 12\xi)\\
+            &= 32\xi^5 - 160\xi^3 + 120\xi,\\
+            H_6(\xi) &= 2\xi H_5(\xi) - 2 \times 5 H_4(\xi)\\
+            &= 2\xi (32\xi^5 - 160\xi^3 + 120\xi) - 10(16\xi^4 - 48\xi^2 + 12)\\
+            &= 64\xi^6 - 480\xi^4 + 720\xi^2 - 120.
+        \end{align*}
+        \item \begin{align*}
+            \frac{\dif H_5}{\dif \xi} &= 160\xi^4 - 480\xi^2 + 120,\\
+            &= 10(16\xi^4 - 48\xi^2 + 12)\\
+            &= 2 \times 5 H_4(\xi),\\
+            \frac{\dif H_6}{\dif \xi} &= 384\xi^5 - 1920\xi^3 + 1440\xi\\
+            &= 12 (32\xi^5 - 160\xi^3 + 120\xi)\\
+            &= 2 \times 6 H_5(\xi).
+        \end{align*}
+        \item \begin{equation*}
+            \frac{\dif}{\dif z} e^{-z^2 + 2z\xi} = (-2z + 2\xi) e^{-z^2 + 2z\xi},
+        \end{equation*}
+        setting $z = 0$ gives us $H_1(\xi) = 2\xi$.
+        \begin{align*}
+            \frac{\dif^2}{\dif z^2} e^{-z^2 + 2z\xi} &= \frac{\dif}{\dif z} (-2z + 2\xi) e^{-z^2 + 2z\xi}\\
+            &= -2 e^{-z^2 + 2z\xi} + (-2z + 2\xi)(-2z + 2\xi) e^{-z^2 + 2z\xi}\\
+            &= \left[ -2 + (-2z + 2\xi)^2 \right] e^{-z^2 + 2z\xi},
+        \end{align*}
+        setting $z = 0$ gives us $H_2(\xi) = 4\xi^2 - 2$.
+        \begin{align*}
+            \frac{\dif^3}{\dif z^3} e^{-z^2 + 2z\xi} &= \frac{\dif}{\dif z} \left[ -2 + (-2z + 2\xi)^2 \right] e^{-z^2 + 2z\xi}\\
+            &= -2 \times 2(-2z + 2\xi) e^{-z^2 + 2z\xi} + \left[ -2 + (-2z + 2\xi)^2 \right] (-2z + 2\xi) e^{-z^2 + 2z\xi}\\
+            &= \left[ (-2z + 2\xi)^3 - 6(-2z + 2\xi) \right] e^{-z^2 + 2z\xi},
+        \end{align*}
+        setting $z = 0$ gives us $H_3(\xi) = 8\xi^3 - 12\xi$.
+    \end{enumerate}
+\end{sol}
+\end{document}
