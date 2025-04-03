@@ -1,8 +1,6 @@
-
 // All imports
 #import "@preview/theoretic:0.1.1" as theoretic: theorem, proof, qed
 #import "@preview/showybox:2.0.4": showybox
-
 // Main noteworthy function
 #let noteworthy(
   paper-size: "a4",
@@ -70,7 +68,22 @@
 
   // Heading settings
   set heading(numbering: "1.")
+  set math.equation(numbering: "(1)", number-align: bottom)
 
+  show ref: it => {
+    let eq = math.equation
+    let el = it.element
+    if el != none and el.func() == eq {
+      // Override equation references.
+      link(el.location(),numbering(
+        el.numbering,
+        ..counter(eq).at(el.location())
+      ))
+    } else {
+      // Other references as usual.
+      it
+    }
+  }
   // Paragraph settings
   set par(justify: true)
 
@@ -108,6 +121,16 @@
 #let definition = theorem.with(
   kind: "definition",
   supplement: "Definition",
+  fmt-prefix: (s, n, t) => {
+    text(weight: "bold", stretch: 85%)[#s #n]
+    if t != none [ (#t)]
+    h(1em)
+  },
+)
+
+#let lemma = theorem.with(
+  kind: "Lemma",
+  supplement: "Lemma",
   fmt-prefix: (s, n, t) => {
     text(weight: "bold", stretch: 85%)[#s #n]
     if t != none [ (#t)]
