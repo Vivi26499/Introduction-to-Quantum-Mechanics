@@ -5,6 +5,7 @@
   font: "New Computer Modern",
   language: "EN",
   title: "Introduction to Quantum Mechanics",
+  contact-details: "Chapter 2",
   author: "Vivi",
   toc-title: "Time-Independent Schrödinger Equation",
 )
@@ -346,3 +347,179 @@ $
     &= integral_(-oo)^oo (hat(a)_minus.plus f)^* g dif x.
   $
 ]
+
+In particular,
+$
+  integral_(-oo)^oo (hat(a)_plus.minus psi_n)^* (hat(a)_plus.minus psi_n) dif x = integral_(-oo)^oo (hat(a)_minus.plus hat(a)_plus.minus psi_n)^* psi_n dif x.
+$
+From equations @HarmonicOscillator2 and @HarmonicOscillatorExcitedStates, we have
+$
+  planck.reduce omega (hat(a)_plus.minus hat(a)_minus.plus plus.minus 1/2) psi_n &= E_n psi_n \
+  &= planck.reduce omega (n + 1/2) psi_n,
+$
+which means
+$
+  hat(a)_+ hat(a)_- psi_n = n psi_n, quad hat(a)_- hat(a)_+ psi_n = (n + 1) psi_n,
+$
+thus,
+$
+  integral_(-oo)^oo (hat(a)_+ psi_n)^* (hat(a)_+ psi_n) dif x &= |c_n|^2 integral_(-oo)^oo psi_(n+1)^* psi_(n+1) dif x \
+  &= (n + 1) integral_(-oo)^oo psi_n^* psi_n dif x,
+$
+so $|c_n|^2 = n + 1$.\
+Similarly, we can get $|d_n|^2 = n$.\
+Hence,
+$
+  hat(a)_+ psi_n = sqrt(n + 1) psi_(n + 1), quad hat(a)_- psi_n = sqrt(n) psi_(n - 1).
+$
+Using mathematical induction, we have
+$
+  psi_n = 1/sqrt(n!) (hat(a)_+)^n psi_0.
+$
+As in the case of the infinite square well, the stationary states of the harmonic oscillator are orthonormal:
+$
+  integral_(-oo)^oo psi_m^* psi_n dif x = delta_(m n).
+$
+
+#proof[
+  $
+    n integral_(-oo)^oo psi_m^* psi_n dif x &= integral_(-oo)^oo psi_m^* hat(a)_+ hat(a)_- psi_n dif x \
+    &= integral_(-oo)^oo (hat(a)_+ hat(a)_- psi_m)^* psi_n dif x \
+    &= m integral_(-oo)^oo psi_m^* psi_n dif x.
+  $
+  Unless $m = n$, $integral_(-oo)^oo psi_m^* psi_n dif x = 0$.
+]
+
+Orthonormality means we can again use
+$
+  c_n = integral psi_n^* Psi(x, 0) dif x
+$
+to determine the coefficients ${c_n}$. $|c_n|^2$ is the probability of measuring the energy to obtain the value $E_n$.\
+Using the definition (equation @LadderOperators), it is convenient to express $x$ and $hat(p)$ in terms of ladder operators:
+$
+  x &= sqrt(planck.reduce/(2m omega)) (hat(a)_+ + hat(a)_-), \
+  hat(p) &= i sqrt(planck.reduce m omega/2) (hat(a)_+ - hat(a)_-).
+$
+
+== Analytic Method
+By introducing the dimensionless variable $xi = sqrt(m omega/planck.reduce) x$, equation @HarmonicOscillator1 becomes
+$
+  (dif^2 psi)/(dif xi^2) = (xi^2 - K) psi,
+$<HarmonicOscillatorDimensionless>
+where
+$
+  K = (2E)/(planck.reduce omega)
+$<DimensionlessEnergy>
+is the dimensionless energy.\
+At very large $xi$, the energy $K$ is negligible, and the solution is
+$
+  psi(xi) tilde e^(-xi^2/2),
+$
+which suggests that the solution can be separated into two parts:
+$
+  psi(xi) = h(xi) e^(-xi^2/2).
+$<SeparatedSolution>
+Differentiating equation @SeparatedSolution twice, we get
+$
+  (dif psi)/(dif xi) &= ((dif h)/(dif xi) - xi h) e^(-xi^2/2), \
+  (dif^2 psi)/(dif xi^2) &= ((dif^2 h)/(dif xi^2) - 2xi (dif h)/(dif xi) + (xi^2 - 1) h) e^(-xi^2/2).
+$
+Substituting these into equation @HarmonicOscillatorDimensionless, we get
+$
+  (dif^2 h)/(dif xi^2) - 2xi (dif h)/(dif xi) + (K - 1) h = 0.
+$<HarmonicOscillatorDimensionless2>
+Rewrite $h(xi)$ as a power series:
+$
+  h(xi) = sum_(n=0)^oo a_n xi^n,
+$
+whose derivatives are
+$
+  (dif h)/(dif xi) &= sum_(n=0)^oo n a_n xi^(n-1), \
+  (dif^2 h)/(dif xi^2) &= sum_(n=0)^oo n(n-1) a_n xi^(n-2) \
+  &= sum_(n=0)^oo (n+2)(n+1) a_(n+2) xi^n.
+$
+Substituting these into equation @HarmonicOscillatorDimensionless2, we get
+$
+  sum_(n=0)^oo [(n+2)(n+1) a_(n+2) - 2n a_n + (K - 1) a_n] xi^n = 0.
+$
+Since $xi$ is arbitrary, the coefficient of each power of $xi$ must vanish:
+$
+  (n+2)(n+1) a_(n+2) - 2n a_n + (K - 1) a_n = 0,
+$
+or
+$
+  a_(n+2) = (2n - K + 1)/((n+1)(n+2)) a_n.
+$<RecursionRelation>
+Starting with $a_0$, it generates all the even-numbered coefficients,
+$
+  a_2 &= (1 - K)/2 a_0, \
+  a_4 &= (5 - K)/12 a_2 = ((5 - K)(1 - K))/24 a_0, \
+  dots
+$
+and starting with $a_1$, it generates all the odd-numbered coefficients,
+$
+  a_3 &= (3 - K)/6 a_1, \
+  a_5 &= (7 - K)/20 a_3 = ((7 - K)(3 - K))/120 a_1, \
+  dots
+$
+We write the complete solution as
+$
+  h(xi) = h_"even"(xi) + h_"odd"(xi),
+$
+where
+$
+  h_"even"(xi) = a_0 + a_2 xi^2 + a_4 xi^4 + dots
+$
+is an even function of $xi$, built on $a_0$, and
+$
+  h_"odd"(xi) = a_1 xi + a_3 xi^3 + a_5 xi^5 + dots
+$
+is an odd function of $xi$, built on $a_1$.\
+However, not all solutions so obtained are normalizable. For normalizable solutions, the power series must terminate. There must occur some highest $j$, say $n$. From equation @RecursionRelation, this means that the numerator must vanish for some $n$:
+$
+  2n - K + 1 = 0 quad => quad K = 2n + 1,
+$
+which leads to the quantization condition for the energy(equation @DimensionlessEnergy):
+$
+  E = (n + 1/2) planck.reduce omega, quad n = 0, 1, 2, dots
+$
+For allowed values of $K$, the recursion formula (equation @RecursionRelation) reads
+$
+  a_(j+2) &= (2j - (2n + 1) + 1)/((j+1)(j+2)) a_j \
+  &= (-2(n-j))/((j+1)(j+2)) a_j.
+$
+If $n = 0$, there is only one coefficient, $a_0$. This gives the ground state wave function:
+$
+  h(xi) = a_0,
+$
+and hence
+$
+  psi_0(xi) = a_0 e^(-xi^2/2).
+$
+If $n = 1$, we take $a_0 = 0$, which gives the first excited state:
+$
+  h(xi) = a_1 xi,
+$
+and hence
+$
+  psi_1(xi) = a_1 xi e^(-xi^2/2).
+$
+If $n = 2$, $a_2 = -2 a_0$, which gives the second excited state:
+$
+  h(xi) &= a_0 + a_2 xi^2 \
+  &= a_0 (1 - 2 xi^2),
+$
+and hence
+$
+  psi_2(xi) = a_0 (1 - 2 xi^2) e^(-xi^2/2).
+$
+In conclusion, the normalized stationary states of the harmonic oscillator are given by
+$
+  psi_n(xi) = (m omega/(pi planck.reduce))^(1/4) 1/sqrt(2^n n!) H_n(xi) e^(-xi^2/2),
+$<HarmonicOscillatorStationaryStates>
+where $H_n(xi)$ is the $n$-th order Hermite polynomial.\
+The quantum harmonic oscillator is strikingly different from its classical counterpart--not only are the energies quantized, but the position distributions have some bizarre features.
+For instance, the probability of finding the particle outside the classically allowed region (i.e., $|x| > A$, where $A = sqrt((2E)/(m omega^2))$) is nonzero.
+And in all odd states, the probability of finding the particle at $x = 0$ is zero, even though the classical oscillator spends most of its time near $x = 0$.
+
+= The Free Particle

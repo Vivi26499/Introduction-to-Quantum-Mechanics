@@ -43,7 +43,7 @@
         align: (left, center, right),
         author,
         if contact-details != none {
-          [#sym.diamond.filled #link(contact-details) #sym.diamond.filled]
+          [#sym.diamond.filled #contact-details #sym.diamond.filled]
         },
         counter(page).display(
           "(1/1)",
