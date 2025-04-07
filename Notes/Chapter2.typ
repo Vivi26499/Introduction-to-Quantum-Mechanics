@@ -142,9 +142,9 @@ $
 $
 or
 $
-  (dif^2 psi)/(dif x^2) = -k^2 psi,
-$
-where $k = sqrt(2m E)/planck.reduce$. The general solution is
+  (dif^2 psi)/(dif x^2) = -k^2 psi, quad k = sqrt(2m E)/planck.reduce.
+$<InfiniteSquareWell1>
+ The general solution to @InfiniteSquareWell1 is
 $
   psi(x) = A sin(k x) + B cos(k x).
 $
@@ -523,3 +523,63 @@ For instance, the probability of finding the particle outside the classically al
 And in all odd states, the probability of finding the particle at $x = 0$ is zero, even though the classical oscillator spends most of its time near $x = 0$.
 
 = The Free Particle
+We turn next to the free particle, which is described by the potential $V(x) = 0$.\
+Classically this would be motion at constant velocity, but in quantum mechanics the problem is surprisingly subtle. The time-independent Schrödinger equation (equation @SchrödingerEquation-x) becomes
+$
+  -planck.reduce^2/(2m) (dif^2 psi)/(dif x^2) = E psi,
+$
+or
+$
+  (dif^2 psi)/(dif x^2) = -k^2 psi, quad k = sqrt(2m E)/planck.reduce.
+$
+
+So far, it's the same as the infinite square well(equation @InfiniteSquareWell1), but the boundary conditions are different.\
+The general solution in exponential form is given by
+$
+  psi(x) = A e^(i k x) + B e^(-i k x).
+$
+Unlike the infinite square well, we have no boundary conditions to restrict the values of $k$ (and hence $E$); the free particle can have any (positive) energy. Tacking on the time dependence, $e^(-(i E t)/planck.reduce)$, we have
+$
+  Psi(x, t) &= A e^(i k x) e^(-(i E t)/planck.reduce) + B e^(-i k x) e^(-(i E t)/planck.reduce) \
+  &= A e^(i k (x - (planck.reduce k)/(2 m)t)) + B e^(-i k (x + (planck.reduce k)/(2 m)t)),
+$
+or
+$
+  Psi_k(x, t) = A e^(i (k x - (planck.reduce k^2)/(2 m)t)),
+$
+where 
+$
+  E = plus.minus sqrt(2 m E) / planck.reduce, quad cases(
+    k > 0 arrow.r.double quad "traveling to the right",
+    k < 0 arrow.r.double quad "traveling to the left".
+  )
+$
+The "stationary states" of the free particle are propagating waves, with wave length $lambda = (2 pi)/abs(k)$, and, according to the de Broglie relation, momentum $p = planck.reduce k$, which is not normalizable:
+$
+  integral_(-oo)^(oo) Psi_k^* Psi_k dif x &= abs(A)^2 integral_(-oo)^(oo) dif x.
+$
+This means that a free particle cannot exist in a stationary state, or have a definite energy.\
+But the general solution is still a linear combination of these solutions, but now an integral instead of a sum:
+$
+  Psi(x, t) &= 1/sqrt(2 pi) integral_(-oo)^(oo) phi.alt(k) e^(i (k x - (planck.reduce k^2)/(2 m)t)) dif k,
+$<FreeParticleGeneralSolution>
+which can be normalized for appropriate $phi.alt(k)$, necessarily carrying a range of $k$s, hence a range of energies and speeds, called a wave packet.\
+For a free particle the solution takes the form of @FreeParticleGeneralSolution, we need to determine $phi.alt(k)$ as to match the initial wave function:
+$
+  Psi(x, 0) = 1/sqrt(2 pi) integral_(-oo)^(oo) phi.alt(k) e^(i k x) dif k,
+$ 
+which means, according to the Fourier transform, that
+$
+  phi.alt(k) = 1/sqrt(2 pi) integral_(-oo)^(oo) Psi(x, 0) e^(-i k x) dif x.
+$
+The speed of these waves is 
+$
+  v_("quantum") &= (planck.reduce abs(k)) / (2m) \
+  &= sqrt(E/(2m)).
+$<FreeParticleSpeed>
+On the other hand, the classical speed of a free particle with energy $E=1/2 m v^2$ is
+$
+  v_("classical") = sqrt((2E)/m),
+$
+which is twice the quantum speed.\
+In fact, $v_"quantum"$ in @FreeParticleSpeed is the phase velocity of the wave, and the group velocity is twice the phase velocity---just right to match the classical speed.
