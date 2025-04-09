@@ -1,16 +1,19 @@
 #import "@preview/showybox:2.0.4": showybox
 // Main noteworthy function
+
+#let current_chapter = counter("chapter")
 #let noteworthy(
   paper-size: "a4",
   font: "New Computer Modern",
   language: "EN",
   title: none,
   author: none,
-  contact-details: none,
+  chapter: none,
   toc-title: "Table of Contents",
   watermark: none,
   content,
 ) = {
+  current_chapter.update(chapter)
   // Document metadata
   set document(
     title: [#title - #author],
@@ -40,8 +43,8 @@
         columns: (1fr, 1fr, 1fr),
         align: (left, center, right),
         author,
-        if contact-details != none {
-          [#sym.diamond.filled #contact-details #sym.diamond.filled]
+        if chapter != none {
+          [#sym.diamond.filled Chapter #chapter #sym.diamond.filled]
         },
         counter(page).display(
           "(1/1)",
@@ -90,14 +93,10 @@
 }
 
 #let problem_counter = counter("problem")
-#let section(body) = {
-  problem_counter.update(0)
-  context[= #body]
-  }
 
 #let prob(body) = {
   problem_counter.step()
-  context [== Problem #context counter(heading).display().#problem_counter.display()]
+  context [== Problem #current_chapter.display().#problem_counter.display()]
   body
 }
 
