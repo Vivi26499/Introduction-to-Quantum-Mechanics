@@ -549,7 +549,7 @@ $
 $
 where 
 $
-  E = plus.minus sqrt(2 m E) / planck.reduce, quad cases(
+  k = plus.minus sqrt(2 m E) / planck.reduce, quad cases(
     k > 0 arrow.r.double quad "traveling to the right",
     k < 0 arrow.r.double quad "traveling to the left".
   )
@@ -563,7 +563,7 @@ But the general solution is still a linear combination of these solutions, but n
 $
   Psi(x, t) &= 1/sqrt(2 pi) integral_(-oo)^(oo) phi.alt(k) e^(i (k x - (planck.reduce k^2)/(2 m)t)) dif k,
 $<FreeParticleGeneralSolution>
-which can be normalized for appropriate $phi.alt(k)$, necessarily carrying a range of $k$s, hence a range of energies and speeds, called a wave packet.\
+which can be normalized for appropriate $phi.alt(k)$, necessarily carrying a range of $k$s, hence a range of energies and speeds, called a *wave packet*.\
 For a free particle the solution takes the form of @FreeParticleGeneralSolution, we need to determine $phi.alt(k)$ as to match the initial wave function:
 $
   Psi(x, 0) = 1/sqrt(2 pi) integral_(-oo)^(oo) phi.alt(k) e^(i k x) dif k,
@@ -582,4 +582,32 @@ $
   v_("classical") = sqrt((2E)/m),
 $
 which is twice the quantum speed.\
-In fact, $v_"quantum"$ in @FreeParticleSpeed is the phase velocity of the wave, and the group velocity is twice the phase velocity---just right to match the classical speed.
+In fact, $v_"quantum"$ in @FreeParticleSpeed is the phase velocity of the wave, and the group velocity is twice the phase velocity---just right to match the classical speed. \
+The problem is to determine the group velocity of the wave packet with the generic form
+$
+  Psi(x, t) = 1/sqrt(2 pi) integral_(-oo)^(oo) phi.alt(k) e^(i (k x - omega t)) dif k,
+$
+where in our case $omega = (planck.reduce k^2)/(2 m)$.\
+Assume that $psi(k)$ is narrowly peaked about $k_0$, so that we can expand $omega$ in a Taylor series about $k_0$, keeping only the first two terms:
+$
+  omega(k) approx omega(k_0) + omega'_0 (k - k_0),
+$
+where $omega'_0 = lr((dif omega)/(dif k) |)_(k=k_0)$. \
+Changing variables from $k$ to $s = k - k_0$, we have
+$
+  Psi(x, t) &approx 1/sqrt(2 pi) integral_(-oo)^(oo) phi.alt(s + k_0) e^(i [(k_0 + s)x - (omega_0 + omega'_0 s)t]) dif s \
+  &= 1/sqrt(2 pi) e^(i (k_0 x - omega_0 t)) integral_(-oo)^(oo) phi.alt(s + k_0) e^(i s (x - omega'_0 t)) dif s.
+$
+The term in front is a sinusoidal (the "ripples"), traveling with the phase velocity $v_"phase" = omega_0/k_0$, the integral(the "envelope") propagates with the group velocity $v_"group" = omega'_0$.\
+Thus,
+$
+  v_"phase" &= omega / k, \
+  v_"group" &= (dif omega)/(dif k).
+$
+In our case, $omega = (planck.reduce k^2)/(2 m)$, so
+$
+  v_"phase" &= (planck.reduce k)/(2m), \
+  v_"group" &= (planck.reduce k)/m = 2 v_"phase".
+$
+
+= The Delta-Function Potential
