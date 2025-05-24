@@ -66,10 +66,10 @@
     v(12pt, weak: true)
     strong(it)
   }
-
+  show math.equation: set block(breakable: true)
   // Heading settings
   show heading.where(level: 1): set heading(numbering: "1")
-  set enum(numbering: "(a)")
+  set enum(numbering: "(a.i)")
 
   // Paragraph settings
   set par(justify: true)

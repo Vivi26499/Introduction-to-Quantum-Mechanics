@@ -1,6 +1,7 @@
 // All imports
 #import "@preview/theoretic:0.1.1" as theoretic: theorem, proof, qed
 #import "@preview/showybox:2.0.4": showybox
+#import "@preview/lilaq:0.3.0" as lq
 // Main noteworthy function
 #let noteworthy(
   paper-size: "a4",
@@ -8,7 +9,7 @@
   language: "EN",
   title: none,
   author: none,
-  contact-details: none,
+  chapter: none,
   toc-title: "Table of Contents",
   watermark: none,
   content,
@@ -42,8 +43,8 @@
         columns: (1fr, 1fr, 1fr),
         align: (left, center, right),
         author,
-        if contact-details != none {
-          [#sym.diamond.filled #contact-details #sym.diamond.filled]
+        if chapter != none {
+          [#sym.diamond.filled Chapter #chapter #sym.diamond.filled]
         },
         counter(page).display(
           "(1/1)",
@@ -52,7 +53,7 @@
       )
     ],
   )
-
+  
   // Text settings
   set text(
     font: font,
@@ -65,7 +66,7 @@
     v(12pt, weak: true)
     strong(it)
   }
-
+  show math.equation: set block(breakable: true)
   // Heading settings
   set heading(numbering: "1.")
   set math.equation(numbering: "(1)", number-align: bottom)
@@ -110,7 +111,6 @@
       depth: 2,
     ),
   )
-
   // Main content
   content
 }

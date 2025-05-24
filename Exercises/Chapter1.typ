@@ -7,7 +7,6 @@
   author: "Vivi",
   chapter: 1,
 )
-
 #prob[
   For the distribution of ages in the example in Section 1.3.1:
   + Compute $angle.l j^2 angle.r$ and $angle.l j angle.r^2$

@@ -5,11 +5,10 @@
   font: "New Computer Modern",
   language: "EN",
   title: "Introduction to Quantum Mechanics",
-  contact-details: "Chapter 1",
+  chapter: 1,
   author: "Vivi",
   toc-title: "The Wave Function",
 )
-
 = The Schrödinger Equation
 $
   i planck.reduce (diff Psi)/(diff t) = -planck.reduce^2/(2m) (diff^2 Psi)/(diff x^2) + V Psi

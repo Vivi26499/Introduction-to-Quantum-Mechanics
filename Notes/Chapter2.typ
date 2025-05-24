@@ -5,11 +5,10 @@
   font: "New Computer Modern",
   language: "EN",
   title: "Introduction to Quantum Mechanics",
-  contact-details: "Chapter 2",
+  chapter: 2,
   author: "Vivi",
   toc-title: "Time-Independent Schrödinger Equation",
 )
-
 = Stationary States
 In the Schrödinger equation,
 $
@@ -108,16 +107,16 @@ There are three important properties of the solutions to the time-independent Sc
 
 + The general solution is a linear combination of separated solutions (stationary states). The time-independent Schrödinger equation (equation @SchrödingerEquation-x) yields an infinite collection of solutions, ${psi_n (x)}$, each with its associated separation constant, ${E_n}$; thus there is a different wave function for each allowed energy:
   $
-    Psi_n(x,t) = psi_n(x) e^(-(i E_n t)/planck.reduce).
+    Psi_n (x,t) = psi_n (x) e^(-i (E_n t)/planck.reduce).
   $
   The general solution is a linear combination of these solutions:
   $
-    Psi(x,t) &= sum_(n=1)^oo c_n Psi_n(x,t) \
-    &= sum_(n=1)^oo c_n psi_n(x) e^(-i (E_n t)/planck.reduce),
+    Psi(x,t) &= sum_(n=1)^oo c_n Psi_n (x,t) \
+    &= sum_(n=1)^oo c_n psi_n (x) e^(-i (E_n t)/planck.reduce),
   $<GeneralSolution>
   where the coefficients ${c_n}$ can be chosen to satisfy the initial conditions:
   $
-    Psi(x,0) = sum_(n=1)^oo c_n psi_n(x).
+    Psi(x,0) = sum_(n=1)^oo c_n psi_n (x).
   $
   $|c_n|^2$ is the probability that a measurement of the energy would return to the value $E_n$. Thus of course,
   $
@@ -166,7 +165,7 @@ $
 $
 Hence the possible values of $E$ are
 $
-  E_n = planck.reduce^2 k_n^2/(2m) = (n^2 pi^2 planck.reduce^2)/(2m a^2).
+  E_n = (planck.reduce^2 k_n^2)/(2m) = (n^2 pi^2 planck.reduce^2)/(2m a^2).
 $
 To find $A$, we normalize $psi(x)$:
 $
@@ -176,7 +175,7 @@ $
 $
 which means $A = sqrt(2/a)$. Then the solutions are
 $
-  psi_n(x) = sqrt(2/a) sin((n pi)/a x).
+  psi_n (x) = sqrt(2/a) sin((n pi)/a x).
 $
 
 As a collection, the functions ${psi_n (x)}$ have some interesting and important properties:
@@ -184,7 +183,7 @@ As a collection, the functions ${psi_n (x)}$ have some interesting and important
 + As $n$ increases, each successive state has one more node: $psi_1(x)$ has none, $psi_2(x)$ has one, $psi_3(x)$ has two, and so on.
 + They are mutually orthonormal, in the sense that
   $
-    integral psi_m(x)^* psi_n(x) dif x = delta_(n m),
+    integral psi_m (x)^* psi_n (x) dif x = delta_(n m),
   $
   where $delta_(n m)$ is the Kronecker delta.
 + They are complete, in the sense that any function $f(x)$ can be expressed as a linear combination of them:
@@ -194,20 +193,20 @@ As a collection, the functions ${psi_n (x)}$ have some interesting and important
   $
   where $c_n$ can be evaluated by
   $
-    integral psi_m(x)^* f(x) dif x &= integral psi_m(x)^* (sum_(n=1)^oo c_n psi_n(x)) dif x \
-    &= sum_(n=1)^oo c_n integral psi_m(x)^* psi_n(x) dif x \
+    integral psi_m (x)^* f(x) dif x &= integral psi_m^*(x) (sum_(n=1)^oo c_n psi_n (x)) dif x \
+    &= sum_(n=1)^oo c_n integral psi_m (x)^* psi_n (x) dif x \
     &= sum c_n delta_(m n) \
     &= c_m.
   $<Coefficients>
 Actually, the first is true whenever $V(x)$ is symmetric; the second is true for any $V(x)$; the third and fourth are true for any $V(x)$.\
 The stationary states(equation @StationaryStates) of the infinite square well are
 $
-  Psi_n(x, t) &= psi_n(x) e^(-(i E_n t)/planck.reduce) \
+  Psi_n (x, t) &= psi_n (x) e^(-i (E_n t)/planck.reduce) \
   &= sqrt(2/a) sin((n pi)/a x) e^(-i((n^2 pi^2 planck.reduce)/(2m a^2))t).
 $
 Then the general solution(equation @GeneralSolution) is
 $
-  Psi(x, t) &= sum_(n=1)^oo c_n Psi_n(x, t) \
+  Psi(x, t) &= sum_(n=1)^oo c_n Psi_n (x, t) \
   &= sum_(n=1)^oo c_n sqrt(2/a) sin((n pi)/a x) e^(-i((n^2 pi^2 planck.reduce)/(2m a^2))t).
 $
 The coefficients ${c_n}$ can be determined by the initial condition $Psi(x, 0)$, using @Coefficients.
@@ -464,15 +463,15 @@ $
 $
 We write the complete solution as
 $
-  h(xi) = h_"even"(xi) + h_"odd"(xi),
+  h(xi) = h_"even" (xi) + h_"odd"  (xi),
 $
 where
 $
-  h_"even"(xi) = a_0 + a_2 xi^2 + a_4 xi^4 + dots
+  h_"even" (xi) = a_0 + a_2 xi^2 + a_4 xi^4 + dots
 $
 is an even function of $xi$, built on $a_0$, and
 $
-  h_"odd"(xi) = a_1 xi + a_3 xi^3 + a_5 xi^5 + dots
+  h_"odd" (xi) = a_1 xi + a_3 xi^3 + a_5 xi^5 + dots
 $
 is an odd function of $xi$, built on $a_1$.\
 However, not all solutions so obtained are normalizable. For normalizable solutions, the power series must terminate. There must occur some highest $j$, say $n$. From equation @RecursionRelation, this means that the numerator must vanish for some $n$:
@@ -515,9 +514,9 @@ $
 $
 In conclusion, the normalized stationary states of the harmonic oscillator are given by
 $
-  psi_n(xi) = (m omega/(pi planck.reduce))^(1/4) 1/sqrt(2^n n!) H_n(xi) e^(-xi^2/2),
+  psi_n (xi) = ((m omega)/(pi planck.reduce))^(1/4) 1/sqrt(2^n n!) H_n (xi) e^(-xi^2/2),
 $<HarmonicOscillatorStationaryStates>
-where $H_n(xi)$ is the $n$-th order Hermite polynomial.\
+where $H_n (xi)$ is the $n$-th order Hermite polynomial.\
 The quantum harmonic oscillator is strikingly different from its classical counterpart--not only are the energies quantized, but the position distributions have some bizarre features.
 For instance, the probability of finding the particle outside the classically allowed region (i.e., $|x| > A$, where $A = sqrt((2E)/(m omega^2))$) is nonzero.
 And in all odd states, the probability of finding the particle at $x = 0$ is zero, even though the classical oscillator spends most of its time near $x = 0$.
@@ -611,3 +610,357 @@ $
 $
 
 = The Delta-Function Potential
+== Bound States and Scattering States
+For the infinite square well and the harmonic oscillator, the solutions to the time-independent Schrödinger equation are normalizable, and labeled by a discrete index $n$; for the free particle, the solutions are not normalizable, and labeled by a continuous variable $k$. The former represent physically realizable states in their own right, the latter do not; but in both cases, the general solution is a linear combination of stationary states---for the first type the combination is a sum over $n$, for the second type an integral over $k$. \
+In classical mechanics, a one-dimensional time-independent potential $V(x)$ can give rise to two different kinds of motion: *bound states*, in which the potential $V(x)$ rises higher than the particle's total energy $E$ on either side, it cannot escape; and *scattering states*, in which the potential $V(x)$ is lower than the particle's total energy $E$ on one side (or both), it can escape.\
+The two kinds of solutions to the time-independent Schrödinger equation correspond precisely to these two kinds of motion. The distinction is even cleaner in quantum domain, because the phenomenon of *tunneling* allows the particle to "leak" through any finite potential barrier, so the only thing that matters is the potential at infinity:
+$
+  cases(
+    E lt V(-infinity) "and" V(+infinity) arrow.double "bound state",
+    E gt V(-infinity) "or" V(+infinity) arrow.double "scattering state",
+  )
+$
+In real life most potentials go to zero at infinity, in which case the criterion simplifies even further:
+$
+  cases(
+    E lt 0 arrow.double "bound state",
+    E gt 0 arrow.double "scattering state",
+  )
+$
+Because the infinite square well and the harmonic oscillator potentials go to infinity as $x arrow plus.minus infinity$, they admit bound states only; because the free particle potential is zero everywhere, it only allows scattering states. From this section we shall explore potentials that allow both kinds of states.
+
+== The Delta-Function Well
+
+The *Dirac delta function* is an infinitely narrow, infinitesimally narrow spike at the origin, with area $1$:
+$
+  delta(x) eq.triple cases(
+    0 quad "if" x eq.not 0,
+    infinity quad "if" x = 0
+  ), quad "with" integral_(-infinity)^infinity delta(x) dif x = 1.
+$
+Technically, it isn't a function at all, since it is not finite at $x = 0$(mathematically, it is a *distribution* or a *generalized function*). \
+Notice that $delta(x - a)$ would be a spike of area $1$ at $x = a$. Integrating a function $f(x)$ against the delta function, we have
+$
+  integral_(-infinity)^infinity f(x) delta(x - a) dif x &= integral_(-infinity)^infinity f(a) delta(x - a) dif x \
+  &= f(a) integral_(-infinity)^infinity delta(x - a) dif x \
+  &= f(a).
+$
+In fact, the integral need not go from $-infinity$ to $infinity$; it can go from $a - epsilon$ to $a + epsilon$, for any $epsilon > 0$:
+$
+  integral_(a - epsilon)^(a + epsilon) f(x) delta(x - a) dif x = f(a).
+$
+Let's consider a potential of the form
+$
+  V(x) = -alpha delta(x),
+$
+where $alpha$ is a positive constant. The time-independent Schrödinger equation (equation @SchrödingerEquation-x) becomes
+$
+  -planck.reduce^2/(2m) (dif^2 psi)/(dif x^2) - alpha delta(x) psi = E psi;
+$
+it yields both bound states ($E < 0$) and scattering states ($E > 0$). \
+First, we consider the bound states. In the region $x < 0, V(x) = 0$, so
+$
+  (dif^2 psi)/(dif x^2) = - (2 m E) / planck.reduce^2 psi = kappa^2 psi,
+$
+where $kappa = sqrt(-2m E)/planck.reduce$ is real and positive. The general solution is
+$
+  psi(x) = A e^(-kappa x) + B e^(kappa x),
+$
+but the first term diverges as $x arrow -infinity$, so $A = 0$:
+$
+  psi(x) = B e^(kappa x), quad (x < 0).
+$
+In the region $x > 0, V(x) = 0$, too, so the general solution is of the same form, but now the second term diverges as $x arrow +infinity$, so $B = 0$:
+$
+  psi(x) = F e^(-kappa x), quad (x > 0).
+$
+It remains only to stitch the two solutions together at $x = 0$. The standard boundary condition for $psi$ tells
++ $psi$ is always continuous;
++ $(dif psi)/(dif x)$ is discontinuous except at points where $V(x)$ is infinite.
+In this case, the first condition gives
+$
+  B = F = psi(0),
+$
+then
+$
+  psi(x) = cases(
+    B e^(kappa x)"," quad &(x < 0),
+    B e^(-kappa x)"," quad &(x > 0)
+  )
+$
+The delta function determines the discontinuity in the derivative of $psi$ at $x = 0$. Intergrating the time-independent Schrödinger equation (Equation @SchrödingerEquation-x) from $-epsilon$ to $+epsilon$, we have:
+$
+  - planck.reduce^2/(2m) integral_(-epsilon)^(+epsilon) (dif^2 psi)/(dif x^2) dif x + integral_(-epsilon)^(+epsilon) V(x) psi(x) dif x &= E integral_(-epsilon)^(+epsilon) psi(x) dif x \
+  - planck.reduce^2/(2m) lr((dif psi)/(dif x) |)_(-epsilon)^(+epsilon) + integral_(-epsilon)^(+epsilon) V(x) psi(x) dif x &= E integral_(-epsilon)^(+epsilon) psi(x) dif x,
+$
+and taking the limit $epsilon arrow 0$, we get
+$
+  - planck.reduce^2/(2m) lim_(epsilon arrow 0) (lr((dif psi)/(dif x) |)_(-epsilon)^(+epsilon)) + integral_(-epsilon)^(+epsilon) V(x) psi(x) dif x &= 0 \
+  lim_(epsilon arrow 0) (lr((dif psi)/(dif x) |)_(-epsilon)^(+epsilon)) &= (2m) / planck.reduce^2 integral_(-epsilon)^(+epsilon) V(x) psi(x) dif x,
+$ <SecondBoundaryCondition>
+where if $V(x)$ is finite, the second term vanishes, then $(dif psi)/(dif x)$ is discontinuous. \
+When $V(x) = -alpha delta(x)$, we have
+$
+  lim_(epsilon arrow 0) (lr((dif psi)/(dif x) |)_(-epsilon)^(+epsilon)) &= -(2m alpha) / planck.reduce^2  integral_(-epsilon)^(+epsilon) delta(x) psi(x) dif x \
+  (- B kappa) - (+ B kappa) &= -(2m alpha) / planck.reduce^2 psi(0) \
+  2 B kappa &= (2m alpha) / planck.reduce^2 B \
+  kappa &= (m alpha) / planck.reduce^2,
+$
+and the allowed energy is
+$
+  E &= - (planck.reduce^2 kappa^2)/(2m) \
+  &= - (m alpha^2) / (2 planck.reduce^2).
+$
+Fincally, we normalize $psi$:
+$
+  1 &= integral_(-infinity)^(+infinity) |psi(x)|^2 dif x \
+  &= 2 B^2 integral_0^(+infinity) e^(-2 kappa x) dif x \
+  &= B^2 / kappa,
+$
+which gives
+$
+  B &= sqrt(kappa) \
+  &= sqrt(m alpha) / (planck.reduce).
+$
+Evidently, the delta-function well, regardless of its "strength" $alpha$, has only one bound state:
+$
+  psi(x) = sqrt(m alpha) / (planck.reduce) e^(-(m alpha abs(x))/planck.reduce^2) quad E = - (m alpha^2) / (2 planck.reduce^2).
+$
+Next, we consider the scattering states, with $E > 0$. In the region $x < 0, V(x) = 0$, the Schrödinger equation reads
+$
+  (dif^2 psi)/(dif x^2) = - (2 m E) / planck.reduce^2 psi = -k^2 psi,
+$
+where$k = sqrt(2 m E) / planck.reduce$ is real and positive. The general solution is
+$
+  psi(x) = A e^(i k x) + B e^(-i k x).
+$
+Similarly, for $x > 0$,
+$
+  psi(x) = F e^(i k x) + G e^(-i k x).
+$
+The continuity of $psi(x)$ at $x = 0$ requires
+$
+  A + B = F + G = psi(0).
+$ <ScatteringState1>
+The second boundary condition (equation @SecondBoundaryCondition) gives
+$
+  lim_(epsilon arrow 0) (lr((dif psi)/(dif x) |)_(-epsilon)^(+epsilon)) &= (2m) / planck.reduce^2 integral_(-epsilon)^(+epsilon) V(x) psi(x) dif x \
+  i k (F - G) - i k (A - B) &= -(2m alpha) / planck.reduce^2 psi(0) \
+  i k (F - G - A + B) &= -(2m alpha) / planck.reduce^2 (A + B),
+$
+or, more compactly,
+$
+  F - G = A(1 + 2i beta) - B(1 - 2i beta), quad "where" beta eq.triple (m alpha) / (planck.reduce^2 k).
+$ <ScatteringState2>
+Having imposed both boundary conditions, we are left with two equations (Equations @ScatteringState1 and @ScatteringState2) in four unknowns ($A$, $B$, $F$, and $G$). Normalization won't help, because the scattering states are not normalizable. \
+As we know, $e^(i k x)$ gives a wave traveling to the right, and $e^(-i k x)$ gives a wave traveling to the left. Thus, $A e^(i k x)$ is a wave coming in from the left, and $B e^(-i k x)$ is a wave returning to the left; $G e^(-i k x)$ is a wave coming in from the right, and $F e^(i k x)$ is a wave returning to the right. In a typical scattering experiment particles are fired from one direction, say from the left, then the amplitude of the wave coming in from the right is zero, $G = 0$. \
+$A$ is the amplitude of the *incident wave*; $B$ is the amplitude of the *reflected wave*; $F$ is the amplitude of the *transmitted wave*. Solving Equations @ScatteringState1 and @ScatteringState2 for $B$ and $F$, we have
+$
+  B &= (i beta) / (1 - i beta) A, \
+  F &= 1 / (1 - i beta) A.
+$
+(In scattering from the right, $A = 0$, $G$ is the incident amplitude, $F$ is the reflected amplitude, and $B$ is the transmitted amplitude.) \
+The _relative_ probability that an incident particle will be reflected back, *refelction coefficient*, is
+$
+  R eq.triple abs(B)^2 / abs(A)^2 &= (beta^2) / (1 + beta^2) \
+  &= 1 / (1 + (2 planck.reduce^2 E) / (m alpha^2)).
+$
+The _relative_ probability that an incident particle will continue on through, *transmission coefficient*, is
+$
+  T eq.triple abs(F)^2 / abs(A)^2 &= 1 / (1 + beta^2) \
+  &= 1 / (1 + (m alpha^2) / (2planck.reduce^2 E))
+$
+Of course, $R + T = 1$, as it should be. On the other hand, the higher the energy $E$, the greater the probability of transmission, and the lower the probability of reflection.\
+For a delta-function _barrier_, $V(x) = + alpha delta(x)$, which kills the bound state, the reflection and transmission coefficients, depending only on $alpha^2$, are unchanged. Strange to say, the particle is just as likely to pass through the barrier as to cross over the well! Unlike classical mechanics, where the particle is reflected back if $E lt V_max$ or transmitted if $E gt V_max$, in quantum mechanics the particle can be transmitted even if $E lt V_max$, this is called *tunneling*.\
+
+= The Finite Square Well
+Consider the finite square well
+$
+  V(x) = cases(
+    -V_0 quad &-a &lt.eq x lt.eq a \
+    0 quad &abs(x) &gt a
+  ),
+$
+where $V_0$ is a (positive) constant. Like the delta-function well, this potential admits both bound states (with $E < 0$) and scattering states (with $E > 0$). \
+First, we consider the bound states. In the region $x < -a, V(x) = 0$, so
+$
+  (dif^2 psi)/(dif x^2) = kappa^2 psi,
+$
+where 
+$
+  kappa = sqrt(-2m E)/planck.reduce
+$ <kappa>
+is real and positive. The general solution is
+$
+  psi(x) = A e^(-kappa x) + B e^(kappa x),
+$
+but the first term diverges as $x arrow -infinity$, so $A = 0$:
+$
+  psi(x) = B e^(kappa x), quad (x < -a).
+$
+In the region $-a < x < a, V(x) = -V_0$, so
+$
+  (dif^2 psi)/(dif x^2) = - l^2 psi,
+$
+where 
+$
+  l = sqrt(2m (E + V_0)) / planck.reduce
+$ <l>
+is real and positive. The general solution is
+$
+  psi(x) = C sin(l x) + D cos(l x), quad (-a < x < a).
+$
+In the region $x > a, V(x) = 0$,
+$
+  psi(x) = F e^(-kappa x) + G e^(kappa x),
+$
+but the second term diverges as $x arrow +infinity$, so $G = 0$:
+$
+  psi(x) = F e^(-kappa x), quad (x > a).
+$
+Since the potential is even, the wave function must be even or odd. \
++ The even solution is
+  $
+    psi(x) = cases(
+      F e^(-kappa x)"," quad &(x > a),
+      D cos(l x)"," quad &(0 < x < a),
+      psi(-x)"," quad &(x < 0)
+    )
+  $
+  The continuity of $psi(x)$ at $x = a$ gives
+  $
+    F e^(-kappa a) = D cos(l a),
+  $<Continuity1>
+  and the continuity of $(dif psi)/(dif x)$ at $x = a$ gives
+  $
+    -kappa F e^(-kappa a) = -l D sin(l a),
+  $
+  deviding by @Continuity1, we have
+  $
+    kappa = l tan(l a),
+  $ <Continuity>
+  which is a formula for the allowed energies, since $kappa$ and $l$ are functions of $E$. To solve for $E$, Let
+  $
+    z eq.triple l a,
+  $
+  and
+  $
+    z_0 eq.triple a / planck.reduce sqrt(2m V_0).
+  $
+  By @kappa and @l, we have
+  $
+    kappa^2 + l^2 = (2m V_0) / planck.reduce^2,
+  $
+  so
+  $
+    kappa a = sqrt(z_0^2 - z^2).
+  $
+  Then @Continuity becomes
+  $
+    tan z = sqrt((z_0 / z)^2 - 1).
+  $
++ The odd solution is
+  $
+    psi(x) = cases(
+      F e^(-kappa x)"," quad &(x > a),
+      C sin(l x)"," quad &(0 < x < a),
+      -psi(-x)"," quad &(x < 0)
+    )
+  $
+  The continuity of $psi(x)$ at $x = a$ gives
+  $
+    F e^(-kappa a) = C sin(l a),
+  $ <Continuity2>
+  and the continuity of $(dif psi)/(dif x)$ at $x = a$ gives
+  $
+    -kappa F e^(-kappa a) = l C cos(l a),
+  $
+  deviding by @Continuity2, we have
+  $
+    kappa = -l cot(l a).
+  $
+  Similarly, we have
+  $
+    - cot z = sqrt((z_0 / z)^2 - 1).
+  $
+Two limiting cases are of special interest:
++ *Wide, deep well* If $z_0$ is very large,
+  $
+    tan z &= sqrt((z_0 / z)^2 - 1) approx infinity \
+    z &= (n pi) / 2, quad n = 1, 3, 5, dots
+  $
+  and
+  $
+    -cot z &= sqrt((z_0 / z)^2 - 1) approx infinity \
+    z &= n pi, quad n = 1, 2, 3, dots
+  $
+  Then in summary,
+  $
+    z = (n pi) / 2, quad n = 1, 2, 3, dots
+  $
+  It follows that
+  $
+    E_n + V_0 &= (z^2 planck.reduce^2) / (2m a^2) \
+    &= (n^2 pi^2 planck.reduce^2) / (2 m (2 a)^2),
+  $
+  which is precisely the energy of a particle in an infinite square well of width $2a$.
++ *Narrow, shallow well* As $z_0$ decreases, there are fewer and fewer bound states, until finally, for $z_0 lt pi / 2$, only one remains. However, there is always one bound state, no matter how "weak" the well is. \
+Then we consider the scattering states, with $E > 0$. In the region $x < -a, V(x) = 0$, we have
+$
+  psi(x) = A e^(i k x) + B e^(-i k x),
+$
+where
+$
+  k eq.triple sqrt(2m E) / planck.reduce.
+$
+Inside the well, $-a < x < a, V(x) = -V_0$,
+$
+  psi(x) = C sin(l x) + D cos(l x),
+$
+where
+$
+  l eq.triple sqrt(2m (E + V_0)) / planck.reduce.
+$
+In the region $x > a, V(x) = 0$,
+$
+  psi(x) = F e^(i k x) + G e^(-i k x),
+$
+or assuming there is no incoming wave from the right, $G = 0$:
+$
+  psi(x) = F e^(i k x).
+$
+Here $A$ is the incident amplitude, $B$ is the reflected amplitude, and $F$ is the transmitted amplitude. \
+The continuity of $psi(x)$ at $x = -a$ gives
+$
+  A e^(-i k a) + B e^(i k a) = -C sin(l a) + D cos(l a),
+$
+and the continuity of $(dif psi)/(dif x)$ at $x = -a$ gives
+$
+  i k[A e^(-i k a) - B e^(i k a)] = -l [C cos(l a) + D sin(l a)],
+$
+the continuity of $psi(x)$ at $x = a$ gives
+$
+  C sin(l a) + D cos(l a) = F e^(i k a),
+$
+and the continuity of $(dif psi)/(dif x)$ at $x = a$ gives
+$
+  l[C cos(l a) - D sin(l a)] = i k F e^(i k a).
+$
+Eliminating $C$ and $D$ from these four equations, we have
+$
+  B &= i sin(2 l a) / (2 k l) (l^2 - k^2) F, \
+  F &= (e^(2 i k a) A) / (cos(2 l a) - i (k^2 + l^2) / (2 k l) sin(2 l a)).
+$
+The transmission coefficient is
+$
+  T^(-1) = 1 + V_0^2 / (4 E (E + V_0)) sin^2((2 a) / planck.reduce sqrt(2m (E + V_0))).
+$
+Notice that when
+$
+  (2 a) / planck.reduce sqrt(2m (E + V_0)) = n pi, quad n = 1, 2, 3, dots
+$
+the transmission coefficient $T = 1$. The energies for perfect transmission are
+$
+  E_n + V_0 = (n^2 pi^2 planck.reduce^2) / (2 m (2 a)^2),
+$
+which happen to be the energy of a particle in an infinite square well of width $2a$.
